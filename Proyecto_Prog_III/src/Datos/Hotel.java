@@ -17,7 +17,7 @@ public class Hotel {
 	 * 
 	 * @param nombre Nombre
 	 * @param direccion Direccion
-	 * @param estrellas Nº de estrellas
+	 * @param estrellas Número de estrellas
 	 */
 	public Hotel(String nombre, String direccion, int estrellas) {
 		super();
