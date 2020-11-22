@@ -30,13 +30,17 @@ public class Producto {
 		this.precio = precio;
 	}
 
+	public double getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(double duracion) {
+		this.duracion = duracion;
+	}
+
 	@Override
 	public String toString() {
 		return "Producto [precio=" + precio + "]";
 	}
-	
-	
-	
-	
 	
 }
