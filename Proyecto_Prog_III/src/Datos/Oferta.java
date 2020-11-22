@@ -7,6 +7,7 @@ public class Oferta {
 	protected double precio;
 	protected int numHuespedes;
 	protected Hotel hotel;
+	protected TipoReserva tipoReserva;
 	protected Date fechaEntrada;
 	protected Date fechaSalida;
 	
@@ -22,14 +23,16 @@ public class Oferta {
 	 * @param precio Precio total
 	 * @param numHuespedes Número de huéspedes
 	 * @param hotel Hotel de alojamiento
+	 * @param tipoReserva Tipo de reserva: Todo incluido, pensión completa o media pensión
 	 * @param fechaEntrada Fecha de entrada al hotel
 	 * @param fechaSalida Fecha de salida del hotel
 	 */
-	public Oferta(double precio, int numHuespedes, Hotel hotel, Date fechaEntrada, Date fechaSalida) {
+	public Oferta(double precio, int numHuespedes, Hotel hotel, TipoReserva tipoReserva, Date fechaEntrada, Date fechaSalida) {
 		super();
 		this.precio = precio;
 		this.numHuespedes = numHuespedes;
 		this.hotel = hotel;
+		this.tipoReserva = tipoReserva;
 		this.fechaEntrada = fechaEntrada;
 		this.fechaSalida = fechaSalida;
 	}
@@ -58,6 +61,14 @@ public class Oferta {
 		this.hotel = hotel;
 	}
 
+	public TipoReserva getTipoReserva() {
+		return tipoReserva;
+	}
+
+	public void setTipoReserva(TipoReserva tipoReserva) {
+		this.tipoReserva = tipoReserva;
+	}
+
 	public Date getFechaEntrada() {
 		return fechaEntrada;
 	}
@@ -76,9 +87,10 @@ public class Oferta {
 
 	@Override
 	public String toString() {
-		return "Oferta [precio=" + precio + ", numHuespedes=" + numHuespedes + ", hotel=" + hotel + ", fechaEntrada="
-				+ fechaEntrada + ", fechaSalida=" + fechaSalida + "]";
+		return "Oferta [precio=" + precio + ", numHuespedes=" + numHuespedes + ", hotel=" + hotel + ", tipoReserva="
+				+ tipoReserva + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + "]";
 	}
+
 	
 	
 	

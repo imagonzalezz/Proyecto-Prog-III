@@ -22,8 +22,8 @@ public class OfertaVisita extends Oferta {
 	 * @param fechaSalida Fecha de salida al hotel
 	 * @param visita Visita incluida en el hotel
 	 */
-	public OfertaVisita(double precio, int numHuespedes, Hotel hotel, Date fechaEntrada, Date fechaSalida, Visita visita) {
-		super(precio, numHuespedes, hotel, fechaEntrada, fechaSalida);
+	public OfertaVisita(double precio, int numHuespedes, Hotel hotel, TipoReserva tipoReserva, Date fechaEntrada, Date fechaSalida, Visita visita) {
+		super(precio, numHuespedes, hotel, tipoReserva, fechaEntrada, fechaSalida);
 		this.visita = visita;
 	}
 

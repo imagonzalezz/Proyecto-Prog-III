@@ -22,8 +22,8 @@ public class OfertaVuelo extends Oferta{
 	 * @param fechaSalida Fecha de salida del hotel
 	 * @param vuelo Vuelo incluido en la oferta
 	 */
-	public OfertaVuelo(double precio, int numHuespedes, Hotel hotel, Date fechaEntrada, Date fechaSalida, Vuelo vuelo) {
-		super(precio, numHuespedes, hotel, fechaEntrada, fechaSalida);
+	public OfertaVuelo(double precio, int numHuespedes, Hotel hotel, TipoReserva tipoReserva, Date fechaEntrada, Date fechaSalida, Vuelo vuelo) {
+		super(precio, numHuespedes, hotel, tipoReserva, fechaEntrada, fechaSalida);
 		this.vuelo = vuelo;
 	}
 
