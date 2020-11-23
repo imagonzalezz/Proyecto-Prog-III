@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Datos.Oferta;
 import Datos.Producto;
 import Datos.Usuario;
 import Datos.Visita;
@@ -37,17 +38,21 @@ public class BD {
 						   "(usuario string, "+
 						   " contrasenya string)");
 			statement.executeUpdate("create table Vuelos "+
-					   "(duracion double, "+
-					   "(precio double, "+
 					   "(origen string, "+
-					   "(destino string, "+
-					   "(clase string, "+
+					   "destino string, "+
+					   "duracion double, "+
+					   "precio double, "+
+					   "clase string, "+
 					   " fechaYHora string)");
 			statement.executeUpdate("create table Visitas "+
-					   "(duracion double, "+
-					   "(precio double, "+
 					   "(lugarInteres string, "+
-					   " valoracion double)");
+					   "duracion double, "+
+					   "precio double, "+
+					   "valoracion double)");
+			statement.executeUpdate("create table Ofertas "+
+					   "(hotel string, "+
+					   "(precioPorAdulto double, "+
+					   " precioPorMenor double)");
 			return statement;
 		} catch (SQLException e) {
 			return null;
@@ -89,7 +94,7 @@ public class BD {
 		try {
 			st = con.createStatement();
 			String query = "INSERT INTO Usuarios VALUES('"+u.getUsuario()+"','"+u.getContrasenya()+"')";
-			st.executeQuery(query);
+			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,13 +115,30 @@ public class BD {
 			String query;
 			if(p instanceof Vuelo) {
 				vu = (Vuelo) p;
-				query = "INSERT INTO Vuelos VALUES("+vu.getPrecio()+","+vu.getDuracion()+",'"+vu.getOrigen()+"','"+vu.getDestino()+"','"+vu.getClase()+"','"+vu.getFechaYHora()+"')";
+				query = "INSERT INTO Vuelos VALUES('"+vu.getOrigen()+"','"+vu.getDestino()+"',"+vu.getDuracion()+"',"+vu.getPrecio()+"','"+vu.getClase()+"','"+vu.getFechaYHora()+"')";
 			}
 			else {
 				vi = (Visita) p;
-				query = "INSERT INTO Visitas VALUES("+vi.getPrecio()+","+vi.getDuracion()+",'"+vi.getLugarInteres()+"',"+vi.getValoracion()+")";
+				query = "INSERT INTO Visitas VALUES('"+vi.getLugarInteres()+"',"+vi.getDuracion()+"',"+vi.getPrecio()+"',"+vi.getValoracion()+")";
 			}
-			st.executeQuery(query);
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			BD.cerrarBD(con, st);
+		}
+	}
+	
+	public void anyadirOferta(Oferta o) {
+		Connection con = BD.initBD("UDTravels.db");
+		Statement st = null;
+		String query;
+		try {
+			st = con.createStatement();
+			query = "INSERT INTO Ofertas VALUES('"+o.getHotel().getNombre()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
+			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
