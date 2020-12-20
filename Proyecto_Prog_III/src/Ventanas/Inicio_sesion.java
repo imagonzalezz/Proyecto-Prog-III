@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -43,7 +46,14 @@ public class Inicio_sesion extends JFrame {
 	public Inicio_sesion() {
 		//JFrame v=this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		int alturaPantalla;
+		int anchuraPantalla;
+		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
+		Dimension tamanoPantalla = mipantalla.getScreenSize(); 
+		alturaPantalla = tamanoPantalla.height; 
+		anchuraPantalla = tamanoPantalla.width; 
+		
+		setBounds(anchuraPantalla/4, alturaPantalla/4, 804, 614);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -89,6 +99,7 @@ public class Inicio_sesion extends JFrame {
 				String user,pwd;
 				user= txtUsuario.getText();
 				pwd=txtPassword.getText();
+				
 				
 			if(user.equals("admin") && pwd.equals("admin")) {
 				Admin vadmmAdmin= new Admin();

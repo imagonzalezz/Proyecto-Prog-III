@@ -1,8 +1,10 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,7 +47,14 @@ public class Crear_usuario extends JFrame {
 	 */
 	public Crear_usuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		int alturaPantalla;
+		int anchuraPantalla;
+		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
+		Dimension tamanoPantalla = mipantalla.getScreenSize(); 
+		alturaPantalla = tamanoPantalla.height; 
+		anchuraPantalla = tamanoPantalla.width; 
+		
+		setBounds(anchuraPantalla/4, alturaPantalla/4, 804, 614);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
