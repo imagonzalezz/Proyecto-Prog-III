@@ -57,7 +57,7 @@ public class Inicio_sesion extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Contraseña");
+		JLabel lblNewLabel_1 = new JLabel("Contraseña"); 
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(90, 124, 103, 20);
 		contentPane.add(lblNewLabel_1);
