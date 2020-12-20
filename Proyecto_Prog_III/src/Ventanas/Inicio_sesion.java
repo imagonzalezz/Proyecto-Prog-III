@@ -60,22 +60,22 @@ public class Inicio_sesion extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblNewLabel.setBounds(90, 67, 82, 35);
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setBounds(278, 171, 54, 35);
 		contentPane.add(lblNewLabel);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(247, 76, 149, 20);
+		txtUsuario.setBounds(383, 180, 149, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña"); 
-		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(90, 124, 103, 20);
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(250, 242, 82, 20);
 		contentPane.add(lblNewLabel_1);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(247, 126, 149, 20);
+		txtPassword.setBounds(383, 244, 149, 20);
 		contentPane.add(txtPassword);
 		
 		JButton btnNewButton = new JButton("Crear Usuario");
@@ -89,8 +89,8 @@ public class Inicio_sesion extends JFrame {
 				
 			}
 		});
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnNewButton.setBounds(54, 200, 136, 23);
+		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
+		btnNewButton.setBounds(173, 354, 159, 35);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
@@ -115,8 +115,8 @@ public class Inicio_sesion extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnNewButton_1.setBounds(270, 199, 126, 24);
+		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 16));
+		btnNewButton_1.setBounds(453, 354, 159, 35);
 		contentPane.add(btnNewButton_1);
 	}
 }

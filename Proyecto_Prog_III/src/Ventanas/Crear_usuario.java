@@ -92,7 +92,7 @@ public class Crear_usuario extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
-		btnNewButton.setBounds(463, 379, 173, 41);
+		btnNewButton.setBounds(449, 379, 173, 41);
 		contentPane.add(btnNewButton);
 		
 		lblNewLabel_3 = new JLabel("Usuario");
@@ -115,7 +115,7 @@ public class Crear_usuario extends JFrame {
 			}
 		});
 		btnInicio.setFont(new Font("Arial", Font.BOLD, 16));
-		btnInicio.setBounds(140, 379, 173, 41);
+		btnInicio.setBounds(125, 379, 173, 41);
 		contentPane.add(btnInicio);
 		
 		textField_1 = new JTextField();
