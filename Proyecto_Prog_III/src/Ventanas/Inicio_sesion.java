@@ -89,7 +89,14 @@ public class Inicio_sesion extends JFrame {
 				user= txtUsuario.getText();
 				pwd=txtPassword.getText();
 				
-			//	if(user.equals(anObject) && pwd.)
+			if(user.equals("admin") && pwd.equals("admin")) {
+				Admin vadmmAdmin= new Admin();
+				vadmmAdmin.setVisible(true);
+				dispose();
+				
+				
+				
+			}
 				
 				//TODO 
 				//que pase a la siguiente ventana
