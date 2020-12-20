@@ -39,6 +39,8 @@ public class Admin extends JFrame {
 		setContentPane(contentPane);
 		
 		
+		
 	}
+
 
 }
