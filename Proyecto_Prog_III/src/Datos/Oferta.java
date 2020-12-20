@@ -4,98 +4,59 @@ import java.util.Date;
 
 public class Oferta {
 	
-	protected double precio;
-	protected int numHuespedes;
 	protected Hotel hotel;
-	protected TipoReserva tipoReserva;
-	protected Date fechaEntrada;
-	protected Date fechaSalida;
+	protected double precioPorAdulto;
+	protected double precioPorMenor;
 	
-	/**
-	 * Constructor por defecto
-	 */
+	
 	public Oferta() {
 		super();
 	}
-	
-	/**
-	 * 
-	 * @param precio Precio total
-	 * @param numHuespedes Número de huéspedes
-	 * @param hotel Hotel de alojamiento
-	 * @param tipoReserva Tipo de reserva: Todo incluido, pensión completa o media pensión
-	 * @param fechaEntrada Fecha de entrada al hotel
-	 * @param fechaSalida Fecha de salida del hotel
-	 */
-	public Oferta(double precio, int numHuespedes, Hotel hotel, TipoReserva tipoReserva, Date fechaEntrada, Date fechaSalida) {
+
+
+	public Oferta(Hotel hotel, double precioPorAdulto, double precioPorMenor) {
 		super();
-		this.precio = precio;
-		this.numHuespedes = numHuespedes;
 		this.hotel = hotel;
-		this.tipoReserva = tipoReserva;
-		this.fechaEntrada = fechaEntrada;
-		this.fechaSalida = fechaSalida;
+		this.precioPorAdulto = precioPorAdulto;
+		this.precioPorMenor = precioPorMenor;
 	}
 
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public int getNumHuespedes() {
-		return numHuespedes;
-	}
-
-	public void setNumHuespedes(int numHuespedes) {
-		this.numHuespedes = numHuespedes;
-	}
 
 	public Hotel getHotel() {
 		return hotel;
 	}
 
+
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
 
-	public TipoReserva getTipoReserva() {
-		return tipoReserva;
+
+	public double getPrecioPorAdulto() {
+		return precioPorAdulto;
 	}
 
-	public void setTipoReserva(TipoReserva tipoReserva) {
-		this.tipoReserva = tipoReserva;
+
+	public void setPrecioPorAdulto(double precioPorAdulto) {
+		this.precioPorAdulto = precioPorAdulto;
 	}
 
-	public Date getFechaEntrada() {
-		return fechaEntrada;
+
+	public double getPrecioPorMenor() {
+		return precioPorMenor;
 	}
 
-	public void setFechaEntrada(Date fechaEntrada) {
-		this.fechaEntrada = fechaEntrada;
+
+	public void setPrecioPorMenor(double precioPorMenor) {
+		this.precioPorMenor = precioPorMenor;
 	}
 
-	public Date getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(Date fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
 
 	@Override
 	public String toString() {
-		return "Oferta [precio=" + precio + ", numHuespedes=" + numHuespedes + ", hotel=" + hotel + ", tipoReserva="
-				+ tipoReserva + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida + "]";
+		return "Oferta [hotel=" + hotel + ", precioPorAdulto=" + precioPorAdulto + ", precioPorMenor=" + precioPorMenor
+				+ "]";
 	}
-
-	
-	
-	
-	
-	
 	
 	
 

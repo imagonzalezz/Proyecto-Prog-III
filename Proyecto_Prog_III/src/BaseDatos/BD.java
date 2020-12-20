@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Datos.Oferta;
+import Datos.Producto;
+import Datos.Usuario;
+import Datos.Visita;
+import Datos.Vuelo;
+
 public class BD {
 	/** Inicializa una BD SQLITE y devuelve una conexión con ella
 	 * @param nombreBD	Nombre de fichero de la base de datos
@@ -28,12 +34,25 @@ public class BD {
 	public static Statement usarCrearTablasBD( Connection con ) {
 		try {
 			Statement statement = con.createStatement();
-			statement.executeUpdate("create table Usuario "+
+			statement.executeUpdate("create table Usuarios "+
 						   "(usuario string, "+
-						   " contraseña string)");
-			statement.executeUpdate("create table Vuelo "+
-					   "(usuario string, "+
-					   " contraseña string)");
+						   " contrasenya string)");
+			statement.executeUpdate("create table Vuelos "+
+					   "(origen string, "+
+					   "destino string, "+
+					   "duracion double, "+
+					   "precio double, "+
+					   "clase string, "+
+					   " fechaYHora string)");
+			statement.executeUpdate("create table Visitas "+
+					   "(lugarInteres string, "+
+					   "duracion double, "+
+					   "precio double, "+
+					   "valoracion double)");
+			statement.executeUpdate("create table Ofertas "+
+					   "(hotel string, "+
+					   "(precioPorAdulto double, "+
+					   " precioPorMenor double)");
 			return statement;
 		} catch (SQLException e) {
 			return null;
@@ -48,7 +67,9 @@ public class BD {
 	public static Statement reiniciarBD( Connection con ) {
 		try {
 			Statement statement = con.createStatement();
-			statement.executeUpdate("drop table if exists Usuario");
+			statement.executeUpdate("drop table if exists Usuarios");
+			statement.executeUpdate("drop table if exists Vuelos");
+			statement.executeUpdate("drop table if exists Visitas");
 			return usarCrearTablasBD( con );
 		} catch (SQLException e) {
 			return null;
@@ -67,4 +88,63 @@ public class BD {
 		}
 	}
 
+	public static void anyadirUsuario(Usuario u){
+		Connection con = BD.initBD("UDTravels.db");
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			String query = "INSERT INTO Usuarios VALUES('"+u.getUsuario()+"','"+u.getContrasenya()+"')";
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			BD.cerrarBD(con, st);
+		}
+		 
+	}
+	
+	public static void anyadirProducto(Producto p) {
+		Connection con = BD.initBD("UDTravels.db");
+		Statement st = null;
+		Vuelo vu;
+		Visita vi;
+		try {
+			st = con.createStatement();
+			String query;
+			if(p instanceof Vuelo) {
+				vu = (Vuelo) p;
+				query = "INSERT INTO Vuelos VALUES('"+vu.getOrigen()+"','"+vu.getDestino()+"',"+vu.getDuracion()+"',"+vu.getPrecio()+"','"+vu.getClase()+"','"+vu.getFechaYHora()+"')";
+			}
+			else {
+				vi = (Visita) p;
+				query = "INSERT INTO Visitas VALUES('"+vi.getLugarInteres()+"',"+vi.getDuracion()+"',"+vi.getPrecio()+"',"+vi.getValoracion()+")";
+			}
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			BD.cerrarBD(con, st);
+		}
+	}
+	
+	public void anyadirOferta(Oferta o) {
+		Connection con = BD.initBD("UDTravels.db");
+		Statement st = null;
+		String query;
+		try {
+			st = con.createStatement();
+			query = "INSERT INTO Ofertas VALUES('"+o.getHotel().getNombre()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			BD.cerrarBD(con, st);
+		}
+	}
 }
