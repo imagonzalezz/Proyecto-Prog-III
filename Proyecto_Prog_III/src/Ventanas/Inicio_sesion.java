@@ -17,8 +17,9 @@ import java.awt.event.ActionEvent;
 public class Inicio_sesion extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField txtUsuario;
+	private JPasswordField txtPassword;
+	
 
 	/**
 	 * Launch the application.
@@ -52,21 +53,31 @@ public class Inicio_sesion extends JFrame {
 		lblNewLabel.setBounds(90, 67, 82, 35);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(247, 76, 149, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(247, 76, 149, 20);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña"); 
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblNewLabel_1.setBounds(90, 124, 103, 20);
 		contentPane.add(lblNewLabel_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(247, 126, 149, 20);
-		contentPane.add(passwordField);
+		txtPassword = new JPasswordField();
+		txtPassword.setBounds(247, 126, 149, 20);
+		contentPane.add(txtPassword);
 		
 		JButton btnNewButton = new JButton("Crear Usuario");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Crear_usuario ventanaCU = new Crear_usuario();
+				ventanaCU.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnNewButton.setBounds(54, 200, 136, 23);
 		contentPane.add(btnNewButton);
@@ -74,7 +85,11 @@ public class Inicio_sesion extends JFrame {
 		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String user,pwd;
+				user= txtUsuario.getText();
+				pwd=txtPassword.getText();
 				
+			//	if(user.equals(anObject) && pwd.)
 				
 				//TODO 
 				//que pase a la siguiente ventana
