@@ -90,6 +90,14 @@ public class Bienvenido extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnIniciarSesin = new JButton("Iniciar Sesión");
+		btnIniciarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio_sesion vetnaInicio_sesion= new Inicio_sesion();
+				vetnaInicio_sesion.setVisible(true);dispose();
+				
+				
+			}
+		});
 		btnIniciarSesin.setFont(new Font("Arial", Font.BOLD, 14));
 		btnIniciarSesin.setBounds(459, 419, 149, 47);
 		contentPane.add(btnIniciarSesin);
