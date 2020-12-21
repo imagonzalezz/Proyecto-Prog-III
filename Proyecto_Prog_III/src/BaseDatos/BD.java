@@ -36,22 +36,48 @@ public class BD {
 			Statement statement = con.createStatement();
 			statement.executeUpdate("create table Usuarios "+
 						   "(usuario string, "+
-						   " contrasenya string)");
+						   "(contrasenya string, "+
+						   " correo string)");
 			statement.executeUpdate("create table Vuelos "+
-					   "(origen string, "+
+					   "(codigo string, "+
+					   "origen string, "+
 					   "destino string, "+
-					   "duracion double, "+
+					   "fechaYHora string, "+
 					   "precio double, "+
-					   " fechaYHora string)");
+					   "duracion double)");
+			statement.executeUpdate("create table ComprasVuelos "+
+					   "(codigo string, "+
+					   "usuario string, "+
+					   "fechaYHora string, "+
+					   "cantidad int)");
 			statement.executeUpdate("create table Visitas "+
-					   "(lugarInteres string, "+
-					   "duracion double, "+
+					   "(codigo string, "+
+					   "lugarInteres string, "+
+					   "valoracion double, "+
 					   "precio double, "+
-					   "valoracion double)");
+					   "duracion double)");
+			statement.executeUpdate("create table ComprasVisitas "+
+					   "(codigo string, "+
+					   "usuario string, "+
+					   "fechaYHora string, "+
+					   "cantidad int)");
 			statement.executeUpdate("create table Ofertas "+
-					   "(hotel string, "+
+					   "(codigo string, "+
+					   "(codigoHotel string, "+
 					   "(precioPorAdulto double, "+
 					   " precioPorMenor double)");
+			statement.executeUpdate("create table ComprasOfertas "+
+					   "(codigo string, "+
+					   "usuario string, "+
+					   "fechaYHora string, "+
+					   "fechaEntrada string, "+
+					   "fechaSalida string, "+
+					   "numAdultos int, "+
+					   "numMenores int)");
+			statement.executeUpdate("create table Hoteles "+
+					   "(codigo string, "+
+					   "direccion string, "+
+					   "estrellas int)");
 			return statement;
 		} catch (SQLException e) {
 			return null;
