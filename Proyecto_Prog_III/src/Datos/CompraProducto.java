@@ -1,26 +1,18 @@
 package Datos;
 
-public class CompraProducto {
-
-	protected Producto producto;
+public class CompraProducto extends Compra {
+	
 	protected int cantidad;
 	
-	public CompraProducto() {
-		super();
+	public CompraProducto(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio) {
+		super(usuario, codigoProducto, fechaYHoraCompra, precio);
+		// TODO Auto-generated constructor stub
 	}
 
-	public CompraProducto(Producto producto, int cantidad) {
-		super();
-		this.producto = producto;
+	public CompraProducto(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio,
+			int cantidad) {
+		super(usuario, codigoProducto, fechaYHoraCompra, precio);
 		this.cantidad = cantidad;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
 	}
 
 	public int getCantidad() {
@@ -30,12 +22,6 @@ public class CompraProducto {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-
-	@Override
-	public String toString() {
-		return "CompraProducto [producto=" + producto + ", cantidad=" + cantidad + "]";
-	}
-	
 	
 	
 }

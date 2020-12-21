@@ -4,15 +4,17 @@ public class Usuario {
 	
 	protected String usuario;
 	protected String contrasenya;
+	protected String correo;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String usuario, String contrasenya) {
+	public Usuario(String usuario, String contrasenya, String correo) {
 		super();
 		this.usuario = usuario;
 		this.contrasenya = contrasenya;
+		this.correo = correo;
 	}
 
 	public String getUsuario() {
@@ -31,11 +33,20 @@ public class Usuario {
 		this.contrasenya = contrasenya;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [usuario=" + usuario + ", contrasenya=" + contrasenya + "]";
+	public String getCorreo() {
+		return correo;
 	}
 
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [usuario=" + usuario + ", contrasenya=" + contrasenya + ", correo=" + correo + "]";
+	}
+
+	
 	
 	
 

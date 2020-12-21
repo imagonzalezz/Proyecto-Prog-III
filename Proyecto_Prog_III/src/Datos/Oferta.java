@@ -7,6 +7,7 @@ public class Oferta {
 	protected Hotel hotel;
 	protected double precioPorAdulto;
 	protected double precioPorMenor;
+	protected String codigoOferta;
 	
 	
 	public Oferta() {
@@ -52,12 +53,20 @@ public class Oferta {
 	}
 
 
+	public String getCodigo() {
+		return codigoOferta;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigoOferta = codigo;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Oferta [hotel=" + hotel + ", precioPorAdulto=" + precioPorAdulto + ", precioPorMenor=" + precioPorMenor
-				+ "]";
+				+ ", codigo=" + codigoOferta + "]";
 	}
 	
-	
-
 }

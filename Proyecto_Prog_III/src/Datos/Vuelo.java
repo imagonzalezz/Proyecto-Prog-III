@@ -4,30 +4,14 @@ public class Vuelo extends Producto {
 
 	protected String origen;
 	protected String destino; 
-	protected ClaseVuelo clase;
 	protected String fechaYHora;
 	
-	/**
-	 * Constructor por defecto
-	 */
-	public Vuelo() {
-		super();
-	}
-
-	/**
-	 * 
-	 * @param origen Ciudad de origen
-	 * @param destino Ciudad de destino
-	 * @param precio Precio del vuelo
-	 * @param duracion Duración del vuelo en minutos
-	 * @param clase Tipo de clase: VIP, BUSINESS o PASSENGER
-	 */
-	public Vuelo(double precio, double duracion, String origen, String destino, ClaseVuelo clase, String fechaYHora) {
-		super(precio, duracion);
+	
+	public Vuelo(double precio, double duracion, String codigoProducto, String origen, String destino,
+			String fechaYHora) {
+		super(precio, duracion, codigoProducto);
 		this.origen = origen;
 		this.destino = destino;
-		this.precio = precio;
-		this.clase = clase;
 		this.fechaYHora = fechaYHora;
 	}
 
@@ -63,18 +47,6 @@ public class Vuelo extends Producto {
 		this.duracion = duracion;
 	}
 
-	public String getClase() {
-		if(this.clase == ClaseVuelo.BUSINESS)
-			return "Business";
-		else if(this.clase == ClaseVuelo.PASSENGER)
-			return "Passenger";
-		else
-			return "Vip";
-	}
-
-	public void setClase(ClaseVuelo clase) {
-		this.clase = clase;
-	}
 
 	public String getFechaYHora() {
 		return fechaYHora;
@@ -86,15 +58,7 @@ public class Vuelo extends Producto {
 
 	@Override
 	public String toString() {
-		return "Vuelo [origen=" + origen + ", destino=" + destino + ", clase=" + clase + ", fechaYHora=" + fechaYHora
-				+ "]";
+		return "Vuelo [origen=" + origen + ", destino=" + destino + ", fechaYHora=" + fechaYHora + "]";
 	}
-
-	
-	
-
-	
-	
-	
 	
 }

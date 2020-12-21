@@ -1,37 +1,23 @@
 package Datos;
 
-import java.util.Date;
+public class CompraOferta extends Compra {
 
-public class CompraOferta {
-
-	protected Oferta oferta;
 	protected int numAdultos;
 	protected int numMenores;
-	protected TipoReserva tipoReserva;
-	protected Date fechaEntrada;
-	protected Date fechaSalida;
+	protected String fechaEntrada;
+	protected String fechaSalida;
 	
-	public CompraOferta() {
-		super();
+	public CompraOferta(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio) {
+		super(usuario, codigoProducto, fechaYHoraCompra, precio);
 	}
 
-	public CompraOferta(Oferta oferta, int numAdultos, int numMenores, TipoReserva tipoReserva, Date fechaEntrada,
-			Date fechaSalida) {
-		super();
-		this.oferta = oferta;
+	public CompraOferta(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio, int numAdultos,
+			int numMenores, String fechaEntrada, String fechaSalida) {
+		super(usuario, codigoProducto, fechaYHoraCompra, precio);
 		this.numAdultos = numAdultos;
 		this.numMenores = numMenores;
-		this.tipoReserva = tipoReserva;
 		this.fechaEntrada = fechaEntrada;
 		this.fechaSalida = fechaSalida;
-	}
-
-	public Oferta getOferta() {
-		return oferta;
-	}
-
-	public void setOferta(Oferta oferta) {
-		this.oferta = oferta;
 	}
 
 	public int getNumAdultos() {
@@ -50,35 +36,26 @@ public class CompraOferta {
 		this.numMenores = numMenores;
 	}
 
-	public TipoReserva getTipoReserva() {
-		return tipoReserva;
-	}
-
-	public void setTipoReserva(TipoReserva tipoReserva) {
-		this.tipoReserva = tipoReserva;
-	}
-
-	public Date getFechaEntrada() {
+	public String getFechaEntrada() {
 		return fechaEntrada;
 	}
 
-	public void setFechaEntrada(Date fechaEntrada) {
+	public void setFechaEntrada(String fechaEntrada) {
 		this.fechaEntrada = fechaEntrada;
 	}
 
-	public Date getFechaSalida() {
+	public String getFechaSalida() {
 		return fechaSalida;
 	}
 
-	public void setFechaSalida(Date fechaSalida) {
+	public void setFechaSalida(String fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 
 	@Override
 	public String toString() {
-		return "CompraOferta [oferta=" + oferta + ", numAdultos=" + numAdultos + ", numMenores=" + numMenores
-				+ ", tipoReserva=" + tipoReserva + ", fechaEntrada=" + fechaEntrada + ", fechaSalida=" + fechaSalida
-				+ "]";
+		return "CompraOferta [numAdultos=" + numAdultos + ", numMenores=" + numMenores + ", fechaEntrada="
+				+ fechaEntrada + ", fechaSalida=" + fechaSalida + "]";
 	}
 
 	

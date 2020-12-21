@@ -8,8 +8,8 @@ import BaseDatos.BD;
 public class Principal {
 
 	public static void main(String[] args) {
-		Connection con = BD.initBD("UDTravels.db");
-		Statement st = BD.usarCrearTablasBD(con);
-		BD.cerrarBD(con, st);
+		String s = "P";
+		s = s + "1";
+		System.out.println(s);
 	}
 }

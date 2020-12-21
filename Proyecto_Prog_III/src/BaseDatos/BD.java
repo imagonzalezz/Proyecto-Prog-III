@@ -42,7 +42,6 @@ public class BD {
 					   "destino string, "+
 					   "duracion double, "+
 					   "precio double, "+
-					   "clase string, "+
 					   " fechaYHora string)");
 			statement.executeUpdate("create table Visitas "+
 					   "(lugarInteres string, "+
@@ -115,7 +114,7 @@ public class BD {
 			String query;
 			if(p instanceof Vuelo) {
 				vu = (Vuelo) p;
-				query = "INSERT INTO Vuelos VALUES('"+vu.getOrigen()+"','"+vu.getDestino()+"',"+vu.getDuracion()+"',"+vu.getPrecio()+"','"+vu.getClase()+"','"+vu.getFechaYHora()+"')";
+				query = "INSERT INTO Vuelos VALUES('"+vu.getOrigen()+"','"+vu.getDestino()+"',"+vu.getDuracion()+"',"+vu.getPrecio()+"','"+vu.getFechaYHora()+"')";
 			}
 			else {
 				vi = (Visita) p;

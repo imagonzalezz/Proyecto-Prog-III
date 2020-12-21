@@ -5,19 +5,8 @@ public class Visita extends Producto {
 	protected String lugarInteres;
 	protected double valoracion;
 	
-	public Visita() {
-		super();
-	}
-
-	/**
-	 * 
-	 * @param precio Precio de la visita
-	 * @param duracion Duración de la visita (minutos)
-	 * @param lugarInteres Nombre del lugar de interes (por ejemplo, un museo)
-	 * @param valoracion Valoración del lugar
-	 */
-	public Visita(double precio, double duracion, String lugarInteres, double valoracion) {
-		super(precio, duracion);
+	public Visita(double precio, double duracion, String codigoProducto, String lugarInteres, double valoracion) {
+		super(precio, duracion, codigoProducto);
 		this.lugarInteres = lugarInteres;
 		this.valoracion = valoracion;
 	}
@@ -42,8 +31,5 @@ public class Visita extends Producto {
 	public String toString() {
 		return "Visita [lugarInteres=" + lugarInteres + ", valoracion=" + valoracion + "]";
 	}
-	
-	
-	
 	
 }
