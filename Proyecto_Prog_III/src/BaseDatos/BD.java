@@ -17,10 +17,10 @@ public class BD {
 	 * @return	Conexión con la base de datos indicada. Si hay algún error, se devuelve null
 	 */
 	
-	public static Connection initBD( String nombreBD ) {
+	public static Connection initBD() {
 		try {
 		    Class.forName("org.sqlite.JDBC");
-		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + nombreBD );
+		    Connection con = DriverManager.getConnection("jdbc:sqlite:" + "UDTravels.db" );
 		    return con;
 		} catch (ClassNotFoundException | SQLException e) {
 			return null;
@@ -94,7 +94,12 @@ public class BD {
 			Statement statement = con.createStatement();
 			statement.executeUpdate("drop table if exists Usuarios");
 			statement.executeUpdate("drop table if exists Vuelos");
+			statement.executeUpdate("drop table if exists ComprasVuelos");
 			statement.executeUpdate("drop table if exists Visitas");
+			statement.executeUpdate("drop table if exists ComprasVisitas");
+			statement.executeUpdate("drop table if exists Ofertas");
+			statement.executeUpdate("drop table if exists ComprasOfertas");
+			statement.executeUpdate("drop table if exists Hoteles");
 			return usarCrearTablasBD( con );
 		} catch (SQLException e) {
 			return null;
@@ -114,7 +119,7 @@ public class BD {
 	}
 
 	public static void anyadirUsuario(Usuario u){
-		Connection con = BD.initBD("UDTravels.db");
+		Connection con = BD.initBD();
 		Statement st = null;
 		try {
 			st = con.createStatement();
@@ -131,7 +136,7 @@ public class BD {
 	}
 	
 	public static void anyadirProducto(Producto p) {
-		Connection con = BD.initBD("UDTravels.db");
+		Connection con = BD.initBD();
 		Statement st = null;
 		Vuelo vu;
 		Visita vi;
@@ -157,7 +162,7 @@ public class BD {
 	}
 	
 	public void anyadirOferta(Oferta o) {
-		Connection con = BD.initBD("UDTravels.db");
+		Connection con = BD.initBD();
 		Statement st = null;
 		String query;
 		try {
