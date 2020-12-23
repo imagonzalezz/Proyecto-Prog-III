@@ -9,23 +9,38 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.security.PublicKey;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 
 import javax.swing.ImageIcon;
 
 public class Bienvenido extends JFrame {
 
 	private JPanel contentPane;
+	private static JLabelGraficoAjustado imagen;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		
-	
+//		(new Thread() {
+//			@Override
+//			public void run() {
+//				for (int op=-100; op<=100; op++ ) {
+//					imagen.setOpacidad( Math.abs(op*0.01f) );
+//					try { Thread.sleep( 20 ); } catch (Exception e) {}  
+//					System.out.println("hola");	
+//				}
+//			}
+//		}).start(); //FIXME
+
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,8 +51,9 @@ public class Bienvenido extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
-	}
+		}); 
+		//funcionOpacidad(); //FIXME
+		} 
 
 	/**
 	 * Create the frame.
@@ -112,11 +128,19 @@ public class Bienvenido extends JFrame {
 		imagen.setBounds(0, 147, 798, 200);
 		contentPane.add(imagen);
 		
+		System.out.println("hola");
+	
+		
+		
+	}
+	
+	
+	public static void funcionOpacidad() {
 		
 		for (int op=-100; op<=100; op++ ) {
 			imagen.setOpacidad( Math.abs(op*0.01f) );
 			try { Thread.sleep( 20 ); } catch (Exception e) {}  
-			System.out.println("hola");
+			System.out.println("hola");	
 		}
 	}
 }

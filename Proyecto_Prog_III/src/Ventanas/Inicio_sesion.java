@@ -119,4 +119,5 @@ public class Inicio_sesion extends JFrame {
 		btnNewButton_1.setBounds(453, 354, 159, 35);
 		contentPane.add(btnNewButton_1);
 	}
+		
 }
