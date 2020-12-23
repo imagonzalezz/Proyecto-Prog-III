@@ -24,6 +24,9 @@ public class Bienvenido extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+	
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -101,5 +104,18 @@ public class Bienvenido extends JFrame {
 		btnIniciarSesin.setFont(new Font("Arial", Font.BOLD, 14));
 		btnIniciarSesin.setBounds(459, 419, 149, 47);
 		contentPane.add(btnIniciarSesin);
+		
+		
+		
+		JLabelGraficoAjustado imagen = new JLabelGraficoAjustado("src/Ventanas/paris.jpg",900,500);
+		imagen.setBounds(0, 147, 798, 200);
+		contentPane.add(imagen);
+		
+		
+		for (int op=-100; op<=100; op++ ) {
+			imagen.setOpacidad( Math.abs(op*0.01f) );
+			try { Thread.sleep( 20 ); } catch (Exception e) {}  
+			System.out.println("hola");
+		}
 	}
 }

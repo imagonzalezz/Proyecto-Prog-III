@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Eleccion_servicio extends JFrame {
+	
 
+	
 	private JPanel contentPane;
 
 	/**
