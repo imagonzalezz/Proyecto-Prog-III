@@ -2,6 +2,7 @@ package BaseDatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -161,13 +162,12 @@ public class BD {
 		}
 	}
 	
-	public void anyadirOferta(Oferta o) {
+	public static void anyadirOferta(Oferta o) {
 		Connection con = BD.initBD();
 		Statement st = null;
-		String query;
+		String query = "INSERT INTO Ofertas VALUES('"+o.getHotel().getNombre()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
 		try {
 			st = con.createStatement();
-			query = "INSERT INTO Ofertas VALUES('"+o.getHotel().getNombre()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -177,4 +177,35 @@ public class BD {
 			BD.cerrarBD(con, st);
 		}
 	}
+	
+	/**
+	 * 
+	 * @param usuario
+	 * @param contrasenya
+	 * @return 	0: No hay ningún usuario con ese nombre de usuario
+	 * 			1: Existe un usuario con ese nombre de usuario pero la contraseña no coincide
+	 * 			2: Existe un usuario con ese nombre de usuario y la contraseña coincide
+	 */
+	public static int comprobacionUsuario(String usuario, String contrasenya) {
+		Connection con = BD.initBD();
+		int resultado = 0;
+		String query = "select * from Usuarios where usuario = '"+usuario+"'";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String c = rs.getString("contrasenya");
+				if(contrasenya.equals(c))
+					resultado = 2;
+				else 
+					resultado = 1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	
 }
