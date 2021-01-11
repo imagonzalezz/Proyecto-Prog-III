@@ -2,8 +2,9 @@ package Datos;
 
 public class Hotel {
 
+	protected String codigo;
 	protected String nombre;
-	protected String direccion;
+	protected String ciudad;
 	protected int estrellas;
 	
 	/**
@@ -19,10 +20,10 @@ public class Hotel {
 	 * @param direccion Direccion
 	 * @param estrellas Número de estrellas
 	 */
-	public Hotel(String nombre, String direccion, int estrellas) {
+	public Hotel(String nombre, String ciudad, int estrellas) {
 		super();
 		this.nombre = nombre;
-		this.direccion = direccion;
+		this.ciudad = ciudad;
 		this.estrellas = estrellas;
 	}
 
@@ -34,12 +35,12 @@ public class Hotel {
 		this.nombre = nombre;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getCiudad() {
+		return ciudad;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setDireccion(String ciudad) {
+		this.ciudad = ciudad;
 	}
 
 	public int getEstrellas() {
@@ -50,9 +51,17 @@ public class Hotel {
 		this.estrellas = estrellas;
 	}
 
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 	@Override
 	public String toString() {
-		return "Hotel [nombre=" + nombre + ", direccion=" + direccion + ", estrellas=" + estrellas + "]";
+		return "Hotel [nombre=" + nombre + ", ciudad=" + ciudad + ", estrellas=" + estrellas + "]";
 	}
 	
 	
