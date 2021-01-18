@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Datos.Hotel;
 import Datos.Oferta;
 import Datos.Producto;
 import Datos.Usuario;
@@ -33,8 +34,9 @@ public class BD {
 	 * @return	sentencia de trabajo si se crea correctamente, null si hay cualquier error
 	 */
 	public static Statement usarCrearTablasBD( Connection con ) {
+		Statement statement = null;
 		try {
-			Statement statement = con.createStatement();
+			statement = con.createStatement();
 			statement.executeUpdate("create table Usuarios "+
 						   "(usuario string, "+
 						   "(contrasenya string, "+
@@ -82,6 +84,8 @@ public class BD {
 			return statement;
 		} catch (SQLException e) {
 			return null;
+		}finally {
+			BD.cerrarBD(con, statement);
 		}
 	}
 	
@@ -178,6 +182,22 @@ public class BD {
 		}
 	}
 	
+	public static void anyadirHotel(Hotel h) {
+		Connection con = BD.initBD();
+		Statement st = null;
+		String query = "INSERT INTO Hoteles VALUES('"+h.getCodigo()+"','"+h.getCiudad()+"',"+h.getEstrellas()+")";
+		try {
+			st = con.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			BD.cerrarBD(con, st);
+		}
+	}
+	
 	/**
 	 * 
 	 * @param usuario
@@ -207,5 +227,4 @@ public class BD {
 		}
 		return resultado;
 	}
-	
 }
