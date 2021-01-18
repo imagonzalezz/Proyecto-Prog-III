@@ -3,21 +3,22 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Eleccion_servicio extends JFrame {
-
-
 
 	private JPanel contentPane;
 
@@ -41,79 +42,83 @@ public class Eleccion_servicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Eleccion_servicio() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
 		int alturaPantalla;
 		int anchuraPantalla;
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
 		Dimension tamanoPantalla = mipantalla.getScreenSize(); 
 		alturaPantalla = tamanoPantalla.height; 
 		anchuraPantalla = tamanoPantalla.width; 
-
+		
 		setBounds(anchuraPantalla/4, alturaPantalla/4, 804, 614);
+		
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-
-		JButton lblNewLabel = new JButton("");
-		lblNewLabel.addActionListener(new ActionListener() {
+		contentPane.setLayout(new BorderLayout());
+		JPanel panelcentro= new JPanel(new GridLayout(3,1));
+		JLabel eleccion= new JLabel("ELECCIÓN DE SERVICIO");
+		eleccion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		eleccion.setHorizontalAlignment(SwingConstants.CENTER);
+		panelcentro.add(eleccion);
+		
+		
+		JPanel panelf2 = new JPanel(new GridLayout(1,3));
+		
+		
+		JButton b1 = new JButton("");
+		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				V_Ofertas ventanaOfertas= new V_Ofertas();
-				ventanaOfertas.setVisible(true);dispose();
-
+				V_Ofertas v= new V_Ofertas();
+				v.setVisible(true);dispose();
 			}
 		});
-		lblNewLabel.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Ahorro.png")));
-		lblNewLabel.setBounds(144, 189, 108, 90);
-		contentPane.add(lblNewLabel);
-
-		JButton lblNewLabel_1 = new JButton("");
-		lblNewLabel_1.addActionListener(new ActionListener() {
-
-			@Override
+		b1.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Ahorro.png")));
+		JButton b2= new JButton("");
+		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				V_Vuelos ventanaVuelos= new V_Vuelos();
-				ventanaVuelos.setVisible(true);dispose();
+				V_Vuelos v = new V_Vuelos();
+				v.setVisible(true);dispose();
 			}
 		});
-		lblNewLabel_1.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Vuelo.png")));
-		lblNewLabel_1.setBounds(343, 189, 108, 90);
-		contentPane.add(lblNewLabel_1);
-
-		JButton lblNewLabel_1_1 = new JButton("");
-		lblNewLabel_1_1.addActionListener(new ActionListener() {
-
-			@Override
+		b2.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Vuelo.png")));
+		JButton b3 = new JButton("");
+		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				V_Visitas ventanaVisitas= new V_Visitas();
-				ventanaVisitas.setVisible(true);dispose();
+				V_Visitas v = new V_Visitas();
+				v.setVisible(true);dispose();
 			}
 		});
-		lblNewLabel_1_1.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Visita.png")));
-		lblNewLabel_1_1.setBounds(534, 189, 108, 90);
-		contentPane.add(lblNewLabel_1_1);
+		b3.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Visita.png")));
 
-		JLabel lblNewLabel_2 = new JLabel("ELECCIÓN DE SERVICIO");
-		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 25));
-		lblNewLabel_2.setBounds(248, 63, 298, 59);
-		contentPane.add(lblNewLabel_2);
+		
+		panelf2.add(b1);panelf2.add(b2);panelf2.add(b3);
 
-		JLabel lblNewLabel_3 = new JLabel("OFERTAS");
-		lblNewLabel_3.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel_3.setBounds(160, 300, 79, 18);
-		contentPane.add(lblNewLabel_3);
-
-		JLabel lblNewLabel_3_1 = new JLabel("VUELOS");
-		lblNewLabel_3_1.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel_3_1.setBounds(367, 300, 61, 18);
-		contentPane.add(lblNewLabel_3_1);
-
-		JLabel lblNewLabel_3_1_1 = new JLabel("VISITAS");
-		lblNewLabel_3_1_1.setFont(new Font("Arial", Font.BOLD, 15));
-		lblNewLabel_3_1_1.setBounds(560, 300, 61, 18);
-		contentPane.add(lblNewLabel_3_1_1);
-
+		
+		panelcentro.add(panelf2);
+		
+		JPanel panelabajo = new JPanel(new GridLayout(1,3));
+		
+		JLabel t1= new JLabel("OFERTAS");
+		t1.setHorizontalAlignment(SwingConstants.CENTER);
+		t1.setVerticalAlignment(SwingConstants.TOP);
+		JLabel t2= new JLabel("VUELOS");
+		t2.setHorizontalAlignment(SwingConstants.CENTER);
+		t2.setVerticalAlignment(SwingConstants.TOP);
+		JLabel t3= new JLabel("VISITAS");
+		t3.setHorizontalAlignment(SwingConstants.CENTER);
+		t3.setVerticalAlignment(SwingConstants.TOP);
+		
+		panelabajo.add(t1);	panelabajo.add(t2);panelabajo.add(t3);
+		
+		panelcentro.add(panelabajo);
+		
+		contentPane.add(panelcentro, BorderLayout.CENTER);
+		
+		
+		
 	}
+
+
 }

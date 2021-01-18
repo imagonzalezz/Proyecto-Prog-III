@@ -7,8 +7,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BaseDatos.BD;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
@@ -16,6 +24,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Inicio_sesion extends JFrame {
 
@@ -44,7 +56,6 @@ public class Inicio_sesion extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio_sesion() {
-		//JFrame v=this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
@@ -57,30 +68,45 @@ public class Inicio_sesion extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout());
 		
+		JPanel panelCentro= new JPanel(new GridLayout(5,2));
+		
+		
+		JPanel panelLbl = new JPanel( new GridLayout(2,2));
+		JPanel panelSuperior= new JPanel();
+		JLabel tS= new JLabel("k");
+		tS.setForeground(new Color(240,240,240));
+		tS.setFont(new Font("Tahoma", Font.PLAIN, 98));
+		
+		panelSuperior.add(tS);
+		panelCentro.add(panelLbl);
 		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(278, 171, 54, 35);
-		contentPane.add(lblNewLabel);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(383, 180, 149, 20);
-		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña"); 
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(250, 242, 82, 20);
-		contentPane.add(lblNewLabel_1);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(383, 244, 149, 20);
-		contentPane.add(txtPassword);
+		
+		
+		panelLbl.add(lblNewLabel);
+		panelLbl.add(txtUsuario);
+		panelLbl.add(lblNewLabel_1);
+		panelLbl.add(txtPassword);
+		
+		
+		JPanel PanelBotones= new JPanel(new GridLayout(1,1));
 		
 		JButton btnNewButton = new JButton("Crear Usuario");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				
 				Crear_usuario ventanaCU = new Crear_usuario();
 				ventanaCU.setVisible(true);
@@ -89,9 +115,12 @@ public class Inicio_sesion extends JFrame {
 				
 			}
 		});
+		
+		
+		
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
-		btnNewButton.setBounds(173, 354, 159, 35);
-		contentPane.add(btnNewButton);
+		
+		
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -107,17 +136,36 @@ public class Inicio_sesion extends JFrame {
 				//v.setVisible(false);
 				
 				
+			}
+			
+			else if(BD.comprobacionUsuario(user, pwd)==1) {
+				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", null, 1);
+				Inicio_sesion i= new Inicio_sesion();
+				i.setVisible(true);dispose();
+				
+			}
+			else if(BD.comprobacionUsuario(user, pwd)==2) {
+				
 				
 			}
 				
-				//TODO 
+				//TODO
+			
 				//que pase a la siguiente ventana
 				
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 16));
-		btnNewButton_1.setBounds(453, 354, 159, 35);
-		contentPane.add(btnNewButton_1);
+		
+		PanelBotones.add(btnNewButton);		PanelBotones.add(btnNewButton_1);
+
+		
+		panelCentro.add(PanelBotones);
+		
+		contentPane.add(panelSuperior, BorderLayout.NORTH);
+		contentPane.add(panelCentro, BorderLayout.CENTER);
+		
+		
 	}
 		
 }

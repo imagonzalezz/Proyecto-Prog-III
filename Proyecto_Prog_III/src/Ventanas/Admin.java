@@ -4,10 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BaseDatos.BD;
 
 public class Admin extends JFrame {
 
@@ -15,8 +20,14 @@ public class Admin extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		
+//		Connection con =BD.initBD();
+//		BD.usarCrearTablasBD(con);
+//		Statement st = con.createStatement();
+//		BD.cerrarBD(con, st);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
