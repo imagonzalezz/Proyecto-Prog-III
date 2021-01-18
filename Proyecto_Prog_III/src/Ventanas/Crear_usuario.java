@@ -63,6 +63,7 @@ public class Crear_usuario extends JFrame {
 		anchuraPantalla = tamanoPantalla.width; 
 		
 		
+		
 		setBounds(anchuraPantalla/4, alturaPantalla/4, 804, 614);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

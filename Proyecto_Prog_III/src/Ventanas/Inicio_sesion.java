@@ -60,6 +60,7 @@ public class Inicio_sesion extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
+		
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
 		Dimension tamanoPantalla = mipantalla.getScreenSize(); 
 		alturaPantalla = tamanoPantalla.height; 
