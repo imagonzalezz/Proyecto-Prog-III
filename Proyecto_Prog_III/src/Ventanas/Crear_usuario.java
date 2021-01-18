@@ -52,6 +52,7 @@ public class Crear_usuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
 	public Crear_usuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;

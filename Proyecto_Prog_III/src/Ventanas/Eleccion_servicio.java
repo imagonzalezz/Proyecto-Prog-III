@@ -22,6 +22,7 @@ public class Eleccion_servicio extends JFrame {
 
 	private JPanel contentPane;
 
+	
 	/**
 	 * Launch the application.
 	 */

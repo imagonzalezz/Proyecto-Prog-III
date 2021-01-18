@@ -42,6 +42,7 @@ public class Bienvenido extends JFrame {
 //		}).start(); //FIXME
 
 		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

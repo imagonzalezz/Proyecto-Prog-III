@@ -52,6 +52,7 @@ public class Inicio_sesion extends JFrame {
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
