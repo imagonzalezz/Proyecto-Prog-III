@@ -12,10 +12,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import BaseDatos.BD;
+
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
@@ -102,10 +106,20 @@ public class Crear_usuario extends JFrame {
 		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_2);
 		
+		
 		btnNewButton = new JButton("Crear Usuario");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("usuario creado");
+				String user,pwd;
+				user= textField.getText();
+				pwd="";
+				if (BD.comprobacionUsuario(user, pwd)==0) {
+					
+					JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe");
+					
+				}
+				
+				JOptionPane.showMessageDialog(null, "Usuario creado");
 				Inicio_sesion ventanaBienvenido= new Inicio_sesion();
 				ventanaBienvenido.setVisible(true);
 				dispose();
@@ -128,7 +142,6 @@ public class Crear_usuario extends JFrame {
 
 
 		
-
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		contentPane.add(textField_3);
@@ -136,5 +149,13 @@ public class Crear_usuario extends JFrame {
 		contentPane.add(btnInicio);
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
 		contentPane.add(btnNewButton);
+		
+
 	}
 }
+
+
+
+
+
+

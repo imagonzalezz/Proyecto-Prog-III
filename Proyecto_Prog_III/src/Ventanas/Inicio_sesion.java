@@ -148,9 +148,12 @@ public class Inicio_sesion extends JFrame {
 			}
 			else if(BD.comprobacionUsuario(user, pwd)==2) {
 				
+				Eleccion_servicio el = new Eleccion_servicio();
+				el.setVisible(true);dispose();
+				
 				
 			}
-				
+							
 				//TODO
 			
 				//que pase a la siguiente ventana
