@@ -34,12 +34,11 @@ public class BD {
 	 * @return	sentencia de trabajo si se crea correctamente, null si hay cualquier error
 	 */
 	public static Statement usarCrearTablasBD( Connection con ) {
-		Statement statement = null;
 		try {
-			statement = con.createStatement();
+			Statement statement = con.createStatement();
 			statement.executeUpdate("create table Usuarios "+
 						   "(usuario string, "+
-						   "(contrasenya string, "+
+						   " contrasenya string, "+
 						   " correo string)");
 			statement.executeUpdate("create table Vuelos "+
 					   "(codigo string, "+
@@ -84,8 +83,6 @@ public class BD {
 			return statement;
 		} catch (SQLException e) {
 			return null;
-		}finally {
-			BD.cerrarBD(con, statement);
 		}
 	}
 	
@@ -226,5 +223,11 @@ public class BD {
 			e.printStackTrace();
 		}
 		return resultado;
+	}
+	
+	public static void main(String[] args) {
+		Connection con = BD.initBD();
+		Statement st = BD.usarCrearTablasBD(con);
+		BD.cerrarBD(con, st);
 	}
 }
