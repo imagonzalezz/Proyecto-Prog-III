@@ -167,7 +167,7 @@ public class BD {
 	public static void anyadirOferta(Oferta o) {
 		Connection con = BD.initBD();
 		Statement st = null;
-		String query = "INSERT INTO Ofertas VALUES('"+o.getCodigo()+"','"+o.getHotel().getCodigo()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
+		String query = "INSERT INTO Ofertas VALUES('"+o.getCodigo()+"','"+o.getCodigoHotel()+"',"+o.getPrecioPorAdulto()+","+o.getPrecioPorMenor()+")";
 		try {
 			st = con.createStatement();
 			st.executeUpdate(query);
