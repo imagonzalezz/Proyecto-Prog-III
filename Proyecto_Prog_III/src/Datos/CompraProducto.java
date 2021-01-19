@@ -7,6 +7,7 @@ public class CompraProducto extends Compra implements TienePrecio {
 	public CompraProducto(Usuario usuario, String codigoComprado, int cantidad) {
 		super(usuario, codigoComprado);
 		this.cantidad = cantidad;
+		this.precio = calcPrecio();
 	}
 
 	public int getCantidad() {
@@ -19,7 +20,7 @@ public class CompraProducto extends Compra implements TienePrecio {
 
 	@Override
 	public double calcPrecio() {
-		
+		return this.precio*this.cantidad;
 	}
 	
 	
