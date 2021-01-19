@@ -1,17 +1,11 @@
 package Datos;
 
-public class CompraProducto extends Compra {
+public class CompraProducto extends Compra implements TienePrecio {
 	
 	protected int cantidad;
-	
-	public CompraProducto(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio) {
-		super(usuario, codigoProducto, fechaYHoraCompra, precio);
-		// TODO Auto-generated constructor stub
-	}
 
-	public CompraProducto(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio,
-			int cantidad) {
-		super(usuario, codigoProducto, fechaYHoraCompra, precio);
+	public CompraProducto(Usuario usuario, String codigoComprado, int cantidad) {
+		super(usuario, codigoComprado);
 		this.cantidad = cantidad;
 	}
 
@@ -21,6 +15,11 @@ public class CompraProducto extends Compra {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	@Override
+	public double calcPrecio() {
+		
 	}
 	
 	

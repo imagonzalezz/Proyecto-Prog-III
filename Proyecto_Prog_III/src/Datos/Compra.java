@@ -4,16 +4,12 @@ public abstract class Compra {
 	
 	protected Usuario usuario;
 	protected String codigoComprado;
-	protected String fechaYHoraCompra;
 	protected double precio;
 	
-	
-	public Compra(Usuario usuario, String codigoProducto, String fechaYHoraCompra, double precio) {
+	public Compra(Usuario usuario, String codigoComprado) {
 		super();
 		this.usuario = usuario;
-		this.codigoComprado = codigoProducto;
-		this.fechaYHoraCompra = fechaYHoraCompra;
-		this.precio = precio;
+		this.codigoComprado = codigoComprado;
 	}
 
 	public Usuario getUsuario() {
@@ -24,20 +20,12 @@ public abstract class Compra {
 		this.usuario = usuario;
 	}
 
-	public String getFechaYHoraCompra() {
-		return fechaYHoraCompra;
-	}
-
-	public void setFechaYHoraCompra(String fechaYHoraCompra) {
-		this.fechaYHoraCompra = fechaYHoraCompra;
-	}
-
-	public String getCodigo() {
+	public String getCodigoComprado() {
 		return codigoComprado;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigoComprado = codigo;
+	public void setCodigoComprado(String codigoComprado) {
+		this.codigoComprado = codigoComprado;
 	}
 
 	public double getPrecio() {
@@ -47,13 +35,7 @@ public abstract class Compra {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-
-	@Override
-	public String toString() {
-		return "Compra [usuario=" + usuario + ", fechaYHoraCompra=" + fechaYHoraCompra + ", codigo=" + codigoComprado
-				+ ", precio=" + precio + "]";
-	}
 	
 	
-
+	
 }

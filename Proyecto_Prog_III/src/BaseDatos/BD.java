@@ -51,7 +51,6 @@ public class BD {
 			statement.executeUpdate("create table ComprasVuelos "+
 					   "(codigo string, "+
 					   "usuario string, "+
-					   "fechaYHora string, "+
 					   "cantidad int)");
 			statement.executeUpdate("create table Visitas "+
 					   "(codigo string, "+
@@ -62,19 +61,16 @@ public class BD {
 			statement.executeUpdate("create table ComprasVisitas "+
 					   "(codigo string, "+
 					   "usuario string, "+
-					   "fechaYHora string, "+
 					   "cantidad int)");
 			statement.executeUpdate("create table Ofertas "+
 					   "(codigo string, "+
-					   "(codigoHotel string, "+
-					   "(precioPorAdulto double, "+
+					   "codigoHotel string, "+
+					   "precioPorAdulto double, "+
 					   " precioPorMenor double)");
 			statement.executeUpdate("create table ComprasOfertas "+
 					   "(codigo string, "+
 					   "usuario string, "+
-					   "fechaYHora string, "+
-					   "fechaEntrada string, "+
-					   "fechaSalida string, "+
+					   "numDias int, "+
 					   "numAdultos int, "+
 					   "numMenores int)");
 			statement.executeUpdate("create table Hoteles "+
@@ -226,7 +222,7 @@ public class BD {
 		return resultado;
 	}
 	
-	public ArrayList<String> destinosOfertas(){
+	public static ArrayList<String> destinosOfertas(){
 		Connection con = BD.initBD();
 		ArrayList<String> destinos = new ArrayList<>();
 		String query = "SELECT codigoHotel FROM Ofertas";
