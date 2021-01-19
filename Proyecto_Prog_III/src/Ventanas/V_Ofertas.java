@@ -4,12 +4,19 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BaseDatos.BD;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class V_Ofertas extends JFrame {
 
@@ -36,6 +43,12 @@ public class V_Ofertas extends JFrame {
 	 */
 	public V_Ofertas() {
 		
+//		JComboBox aBox = new JComboBox();
+//		for (String oferta : BD.) {
+//			
+//		}
+//		aBox.add(comp)
+// 		
 		int alturaPantalla;
 		int anchuraPantalla;
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
@@ -49,7 +62,7 @@ public class V_Ofertas extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new GridLayout(3, 3, 0, 0));
 		
 	
 	}

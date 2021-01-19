@@ -18,6 +18,7 @@ public class Hotel {
 	/**
 	 * Constructor por defecto
 	 */
+	
 	public Hotel() {
 		super();
 	}

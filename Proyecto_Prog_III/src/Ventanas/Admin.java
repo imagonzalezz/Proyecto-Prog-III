@@ -24,10 +24,7 @@ public class Admin extends JFrame {
 	 */
 	public static void main(String[] args) throws SQLException {
 		
-		Connection con =BD.initBD();
-		BD.usarCrearTablasBD(con);
-		Statement st = con.createStatement();
-		BD.cerrarBD(con, st);
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

@@ -27,6 +27,7 @@ public abstract class TieneCod {
 			BD.cerrarBD(con, st);
 		}
 		return codigos;
+		
 	}
 	
 	public String generarCodigo(ArrayList<String> codigos, String prefijo, int cod, int indice) {

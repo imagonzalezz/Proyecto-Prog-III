@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import BaseDatos.BD;
+import Datos.Usuario;
 
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
@@ -29,11 +30,11 @@ public class Crear_usuario extends JFrame {
 	private JPasswordField txtPassword2;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel_3;
-	private JTextField textField;
+	private JTextField textFieldUsuario;
 	private JButton btnInicio;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textFieldCorreo;
+	private JTextField textFieldContrasenya;
+	private JTextField textFieldConfirmarContra;
 	
 
 
@@ -58,6 +59,7 @@ public class Crear_usuario extends JFrame {
 	 */
 	
 	public Crear_usuario() {
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
@@ -79,50 +81,84 @@ public class Crear_usuario extends JFrame {
 		lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		contentPane.add(textField);
+		textFieldUsuario = new JTextField();
+		textFieldUsuario.setColumns(10);
+		contentPane.add(textFieldUsuario);
 		
 		JLabel lblNewLabel = new JLabel("Correo Electronico");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		contentPane.add(textField_1);
+		textFieldCorreo = new JTextField();
+		textFieldCorreo.setColumns(10);
+		contentPane.add(textFieldCorreo);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña"); 
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		contentPane.add(textField_2);
+		textFieldContrasenya = new JTextField();
+		textFieldContrasenya.setColumns(10);
+		contentPane.add(textFieldContrasenya);
 		
 		JLabel lblNewLabel_2 = new JLabel("Comprobar Contraseña"); 
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_2);
 		
+		textFieldConfirmarContra = new JTextField();
+		textFieldConfirmarContra.setColumns(10);
+		contentPane.add(textFieldConfirmarContra);
+		
 		
 		btnNewButton = new JButton("Crear Usuario");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String user,pwd;
-				user= textField.getText();
-				pwd="";
-				if (BD.comprobacionUsuario(user, pwd)==0) {
+				String usuario,correo,contrasenya, confirmarContra;
+				
+				usuario= textFieldUsuario.getText();
+				correo= textFieldCorreo.getText();
+				contrasenya = textFieldContrasenya.getText();
+				confirmarContra= textFieldConfirmarContra.getText();
+				
+				if (BD.comprobacionUsuario(usuario, contrasenya)==0) {
 					
-					JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe");
+					
+					
+					if(contrasenya.equals(confirmarContra)) {
+					Usuario usu= new Usuario (usuario, contrasenya, correo);
+					BD.anyadirUsuario(usu);
+					
+					JOptionPane.showMessageDialog(null, "El usuario se ha creado correctamente");
+					
+					Inicio_sesion ventanaBienvenido= new Inicio_sesion();
+					ventanaBienvenido.setVisible(true);
+					dispose();
+					
+					
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+						Crear_usuario cu= new Crear_usuario();
+						cu.setVisible(true);dispose();
+						}
+				}
+				
+		
+				else if(BD.comprobacionUsuario(usuario, contrasenya)==1 || BD.comprobacionUsuario(usuario, contrasenya)==2) {
+					JOptionPane.showMessageDialog(null, "El usuario ya existe");
+					Crear_usuario cu = new Crear_usuario();
+					cu.setVisible(true);
+					dispose();
+			
+					
 					
 				}
 				
-				JOptionPane.showMessageDialog(null, "Usuario creado");
-				Inicio_sesion ventanaBienvenido= new Inicio_sesion();
-				ventanaBienvenido.setVisible(true);
-				dispose();
+				
+			
 				
 				
 				
@@ -142,9 +178,7 @@ public class Crear_usuario extends JFrame {
 
 
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		contentPane.add(textField_3);
+		
 		btnInicio.setFont(new Font("Arial", Font.BOLD, 16));
 		contentPane.add(btnInicio);
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
