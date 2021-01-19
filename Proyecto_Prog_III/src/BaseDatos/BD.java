@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import Datos.Hotel;
 import Datos.Oferta;
@@ -225,9 +226,29 @@ public class BD {
 		return resultado;
 	}
 	
-	public static void main(String[] args) {
+	public ArrayList<String> destinosOfertas(){
 		Connection con = BD.initBD();
-		Statement st = BD.usarCrearTablasBD(con);
-		BD.cerrarBD(con, st);
+		ArrayList<String> destinos = new ArrayList<>();
+		String query = "SELECT codigoHotel FROM Ofertas";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String query2 = "SELECT ciudad FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
+				ResultSet rs2 = st.executeQuery(query2);
+				while(rs2.next()) {
+					String destino = rs2.getString("ciudad");
+					destinos.add(destino);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			BD.cerrarBD(con, st);
+		}
+		return destinos;
 	}
+	
 }

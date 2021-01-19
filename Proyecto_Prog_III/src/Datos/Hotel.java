@@ -8,19 +8,12 @@ import java.util.ArrayList;
 
 import BaseDatos.BD;
 
-public class Hotel {
+public class Hotel extends TieneCod{
 
 	protected String codigo;
 	protected String nombre;
 	protected String ciudad;
 	protected int estrellas;
-	
-	/**
-	 * Constructor por defecto
-	 */
-	public Hotel() {
-		super();
-	}
 
 	/**
 	 * 
@@ -33,6 +26,9 @@ public class Hotel {
 		this.nombre = nombre;
 		this.ciudad = ciudad;
 		this.estrellas = estrellas;
+		ArrayList<String> codigos = codigosEnAL("Hoteles");
+		String codigo = generarCodigo(codigos, "HO", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
+		this.setCodigo(codigo);
 	}
 
 	public String getNombre() {
@@ -69,6 +65,8 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "Hotel [nombre=" + nombre + ", ciudad=" + ciudad + ", estrellas=" + estrellas + "]";
+		return "Hotel [codigo=" + codigo + ", nombre=" + nombre + ", ciudad=" + ciudad + ", estrellas=" + estrellas
+				+ "]";
 	}
+
 }
