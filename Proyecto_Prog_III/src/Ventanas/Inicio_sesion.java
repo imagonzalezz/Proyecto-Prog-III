@@ -3,6 +3,7 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -80,8 +81,9 @@ public class Inicio_sesion extends JFrame {
 		JPanel panelLbl = new JPanel( new GridLayout(2,2));
 		JPanel panelSuperior= new JPanel();
 		JLabel tS= new JLabel(new ImageIcon(Bienvenido.class.getResource("/Ventanas/logo Deusto.png")));
+		tS.setSize(1000,1000);
 		tS.setForeground(new Color(240,240,240));
-		tS.setFont(new Font("Tahoma", Font.PLAIN, 98));
+		tS.setFont(new Font("Tahoma", Font.PLAIN, 120));
 		
 		panelSuperior.add(tS);
 		panelCentro.add(panelLbl);
@@ -105,9 +107,11 @@ public class Inicio_sesion extends JFrame {
 		panelLbl.add(txtPassword);
 		
 		
-		JPanel PanelBotones= new JPanel(new GridLayout(1,1));
+		JPanel PanelBotones= new JPanel(new GridLayout(1,2));
 		
 		JButton btnNewButton = new JButton("Crear Usuario");
+		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
+		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -126,7 +130,7 @@ public class Inicio_sesion extends JFrame {
 		
 		
 		
-		JButton btnNewButton_1 = new JButton("Iniciar Sesi�n");
+		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user,pwd;
@@ -143,7 +147,7 @@ public class Inicio_sesion extends JFrame {
 			}
 			
 			else if(BD.comprobacionUsuario(user, pwd)==1) {
-				JOptionPane.showMessageDialog(null, "Contrase�a Incorrecta", null, 1);
+				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", null, 1);
 				Inicio_sesion i= new Inicio_sesion();
 				i.setVisible(true);dispose();
 				
@@ -166,9 +170,14 @@ public class Inicio_sesion extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 16));
+		JPanel panelCU= new JPanel(new FlowLayout());
+		panelCU.add(btnNewButton);
+		JPanel panelI= new JPanel(new FlowLayout());
+		panelI.add(btnNewButton_1);
 		
-		PanelBotones.add(btnNewButton);		
-		PanelBotones.add(btnNewButton_1);
+		
+		PanelBotones.add(panelCU);		
+		PanelBotones.add(panelI);
 
 		
 		panelCentro.add(PanelBotones);

@@ -92,7 +92,7 @@ public class V_Ofertas extends JFrame {
 		pNorte.add(aBox);
 		contentPane.add(pNorte,BorderLayout.NORTH);
 		
-		String [] identificadores = {"CÓDIGO OFERTA","CÍDIGO HOTEL","PRECIO POR ADULTO","PRECIO POR MENOR"};
+		String [] identificadores = {"CÓDIGO OFERTA","CÓDIGO HOTEL","PRECIO POR ADULTO","PRECIO POR MENOR"};
 		modeloTabla = new DefaultTableModel();
 		modeloTabla.setColumnIdentifiers(identificadores);
 		tablaOfertas = new JTable(modeloTabla);
@@ -119,7 +119,7 @@ public class V_Ofertas extends JFrame {
 				// TODO Auto-generated method stub
 				int fila = tablaOfertas.getSelectedRow();
 				if(fila!=-1) {
-					int resp = JOptionPane.showConfirmDialog(null, "¿Quieres comprar esta oferta?");
+					int resp = JOptionPane.showConfirmDialog(null, "¿Quieres comprar ésta oferta?");
 					if(resp == JOptionPane.YES_OPTION) {
 						String codigoOferta = String.valueOf(modeloTabla.getValueAt(fila, 0));
 						String codigoHotel = String.valueOf(modeloTabla.getValueAt(fila, 1));
@@ -135,23 +135,7 @@ public class V_Ofertas extends JFrame {
 				}
 			}
 		});
-		/*tablaOfertas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-			
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				int fila = e.getFirstIndex();
-				int resp = JOptionPane.showConfirmDialog(null, "�Quieres comprar esta oferta?");
-				if(resp == JOptionPane.YES_OPTION) {
-					String codigoOferta = String.valueOf(modeloTabla.getValueAt(fila, 0));
-					String codigoHotel = String.valueOf(modeloTabla.getValueAt(fila, 1));
-					double precioPorAdulto = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 2)));
-					double precioPorMenor = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 3)));
-					Oferta o = new Oferta(codigoOferta, codigoHotel, precioPorAdulto,precioPorMenor);
-					System.out.println("Hay que a�adir al carrito la oferta"+o);
-				}
-			}
-		});*/
+
 	
 	}
 	

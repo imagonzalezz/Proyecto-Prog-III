@@ -135,7 +135,7 @@ public class Bienvenido extends JFrame {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				String imagenes[] = {"src/Ventanas/paris.jpg","src/Ventanas/londres.jpg","src/Ventanas/londres.jpg","src/Ventanas/londres.jpg"};
+				String imagenes[] = {"src/Ventanas/paris.jpg","src/Ventanas/londres.jpg","src/Ventanas/miami.jpg","src/Ventanas/sidney.jpg"};
 				float valorInicial = imagen.getOpacidad();
 				int i=imagenes.length-1;
 				int x = 2;

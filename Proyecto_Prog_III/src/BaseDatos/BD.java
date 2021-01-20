@@ -311,7 +311,7 @@ public class BD {
 	
 	public static ArrayList<Visita> obtenerVisitasDestino(String destino){
 		ArrayList<Visita> visitas = new ArrayList<>();
-		String query = "SELECT * FROM Visitas WHERE direccion='" + destino + "'";
+		String query = "SELECT * FROM Visitas WHERE direccion='"+destino+"'";
 		Connection con = BD.initBD();
 		Statement st = null;
 		try {
