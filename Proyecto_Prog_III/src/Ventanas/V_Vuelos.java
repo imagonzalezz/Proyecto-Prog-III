@@ -112,7 +112,6 @@ public class V_Vuelos extends JFrame {
 						double precio = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 4)));
 						double duracion = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 5)));
 						Vuelo vuelo = new Vuelo(origen, destino, fechaYHora, precio,duracion);
-						System.out.println("g");
 						int numPersonas = Integer.parseInt(JOptionPane.showInputDialog("Introduce el número de personas: "));
 						CompraProducto co = new CompraProducto(Inicio_sesion.usuario, codigoVuelo,  numPersonas);
 						Eleccion_servicio.carrito.add(co);
