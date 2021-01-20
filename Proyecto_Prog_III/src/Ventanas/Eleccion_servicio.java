@@ -23,9 +23,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Eleccion_servicio extends JFrame {
+	
 
 	private JPanel contentPane;
 	public static ArrayList<TienePrecio> carrito = new ArrayList<>();
+	private JButton cerrarSesion;
 	
 	
 	/**
@@ -48,7 +50,7 @@ public class Eleccion_servicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Eleccion_servicio() {
-		
+		JFrame ventana=this;
 		int alturaPantalla;
 		int anchuraPantalla;
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
@@ -73,27 +75,43 @@ public class Eleccion_servicio extends JFrame {
 		JPanel panelf2 = new JPanel(new GridLayout(1,3));
 		
 		
+		JButton cerrarSesion= new JButton("Cerrar sesion");
+		contentPane.add(cerrarSesion, BorderLayout.SOUTH);
+		
+		cerrarSesion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Bienvenido b= new Bienvenido();
+				b.setVisible(true);dispose();
+			}
+		} );
+		
+		
+		
 		JButton b1 = new JButton("");
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				V_Ofertas v= new V_Ofertas();
-				v.setVisible(true);dispose();
+				V_Ofertas v= new V_Ofertas(ventana);
+				v.setVisible(true);ventana.setVisible(false);
+;
 			}
 		});
 		b1.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Ahorro.png")));
 		JButton b2= new JButton("");
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				V_Vuelos v = new V_Vuelos();
-				v.setVisible(true);dispose();
+				V_Vuelos v = new V_Vuelos(ventana);
+				v.setVisible(true);ventana.setVisible(false);
 			}
 		});
 		b2.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Vuelo.png")));
 		JButton b3 = new JButton("");
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				V_Visitas v = new V_Visitas();
-				v.setVisible(true);dispose();
+				V_Visitas v = new V_Visitas(ventana);
+				v.setVisible(true);ventana.setVisible(false);
+
 			}
 		});
 		b3.setIcon(new ImageIcon(Eleccion_servicio.class.getResource("/Ventanas/Icono_Visita.png")));

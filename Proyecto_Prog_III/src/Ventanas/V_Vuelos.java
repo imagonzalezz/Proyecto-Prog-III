@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ public class V_Vuelos extends JFrame {
 	private JComboBox<String> aBox;
 	private JTable tablaVuelos;
 	private DefaultTableModel modeloTabla;
+	private JButton botonAtras;
 	/**
 	 * Launch the application.
 	 */
@@ -38,8 +40,8 @@ public class V_Vuelos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					V_Vuelos frame = new V_Vuelos();
-					frame.setVisible(true);
+//					V_Vuelos frame = new V_Vuelos();
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,7 +52,9 @@ public class V_Vuelos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public V_Vuelos() {
+	public V_Vuelos(JFrame ventanaAnterior) {
+		JFrame ventana= this;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
@@ -80,6 +84,19 @@ public class V_Vuelos extends JFrame {
 		modeloTabla.setColumnIdentifiers(identificadores);
 		tablaVuelos = new JTable(modeloTabla);
 		JScrollPane scrollTabla = new JScrollPane(tablaVuelos);
+		
+		
+		botonAtras= new JButton("Atras");
+		contentPane.add(botonAtras, BorderLayout.SOUTH);
+		botonAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaAnterior.setVisible(true);
+				ventana.dispose();
+				
+			}
+		});
 		
 		pCentro = new JPanel();
 		pCentro.add(scrollTabla);

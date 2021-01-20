@@ -32,6 +32,8 @@ public class Bienvenido extends JFrame {
 	
 	public static void main(String[] args) {
 		
+		
+		
 //		(new Thread() {
 //			@Override
 //			public void run() {
@@ -103,6 +105,7 @@ public class Bienvenido extends JFrame {
 				Crear_usuario ventCrear_usuario= new Crear_usuario();
 				ventCrear_usuario.setVisible(true);
 				dispose();
+				hiloFuncionando= false;
 				
 				
 				

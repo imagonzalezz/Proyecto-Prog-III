@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -31,6 +32,7 @@ public class V_Visitas extends JFrame {
 	private JComboBox<String> aBox;
 	private JTable tablaVisitas;
 	private DefaultTableModel modeloTabla;
+	private JButton botonAtras;
 
 
 	/**
@@ -40,8 +42,8 @@ public class V_Visitas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					V_Visitas frame = new V_Visitas();
-					frame.setVisible(true);
+//					V_Visitas frame = new V_Visitas();
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,7 +54,10 @@ public class V_Visitas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public V_Visitas() {
+	public V_Visitas(JFrame ventanaAnterior) {
+		
+		
+		JFrame ventana= this;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
@@ -84,6 +89,19 @@ contentPane.setLayout(new BorderLayout());
 		modeloTabla.setColumnIdentifiers(identificadores);
 		tablaVisitas = new JTable(modeloTabla);
 		JScrollPane scrollTabla = new JScrollPane(tablaVisitas);
+		
+		
+		botonAtras= new JButton("Atras");
+		contentPane.add(botonAtras, BorderLayout.SOUTH);
+		botonAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaAnterior.setVisible(true);
+				ventana.dispose();
+				
+			}
+		});
 		
 		pCentro = new JPanel();
 		pCentro.add(scrollTabla);

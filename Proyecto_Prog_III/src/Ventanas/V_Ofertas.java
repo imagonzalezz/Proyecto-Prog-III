@@ -40,7 +40,7 @@ public class V_Ofertas extends JFrame {
 	private JComboBox<String> aBox;
 	private JTable tablaOfertas;
 	private DefaultTableModel modeloTabla;
-
+	private JButton botonAtras;
 	/**
 	 * Launch the application.
 	 */
@@ -48,8 +48,8 @@ public class V_Ofertas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					V_Ofertas frame = new V_Ofertas();
-					frame.setVisible(true);
+//					V_Ofertas frame = new V_Ofertas();
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,10 +64,10 @@ public class V_Ofertas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public V_Ofertas() {
+	public V_Ofertas(JFrame ventanaAnterior) {
 		
-	
- 		
+		JFrame ventana = this;
+ 	
 		int alturaPantalla;
 		int anchuraPantalla;
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
@@ -98,9 +98,23 @@ public class V_Ofertas extends JFrame {
 		tablaOfertas = new JTable(modeloTabla);
 		JScrollPane scrollTabla = new JScrollPane(tablaOfertas);
 		
+		botonAtras= new JButton("Atras");
+		contentPane.add(botonAtras, BorderLayout.SOUTH);
+		botonAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ventanaAnterior.setVisible(true);
+				ventana.dispose();
+				
+			}
+		});
+		
 		pCentro = new JPanel();
 		pCentro.add(scrollTabla);
 		contentPane.add(pCentro,BorderLayout.CENTER);
+		
+		
 		
 		aBox.addActionListener(new ActionListener() {
 			
