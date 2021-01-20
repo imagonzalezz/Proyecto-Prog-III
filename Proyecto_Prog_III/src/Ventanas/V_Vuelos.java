@@ -64,11 +64,11 @@ public class V_Vuelos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-contentPane.setLayout(new BorderLayout());
+		contentPane.setLayout(new BorderLayout());
 		
-		ArrayList<String> destinos= BD.destinosOfertas();
+		ArrayList<String> origenes= BD.origenesVuelo();
 		aBox = new JComboBox<>();
-		for (String d: destinos) {
+		for (String d: origenes) {
 			aBox.addItem(d);
 		}
 		pNorte = new JPanel();	
