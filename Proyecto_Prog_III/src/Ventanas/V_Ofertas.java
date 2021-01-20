@@ -113,6 +113,7 @@ public class V_Ofertas extends JFrame {
 				}
 			}
 		});
+		
 		tablaOfertas.addMouseListener(new MouseAdapter()  {
 			
 			public void mouseClicked(MouseEvent e) {
