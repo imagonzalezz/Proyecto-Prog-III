@@ -55,6 +55,7 @@ public class BD {
 			statement.executeUpdate("create table Visitas "+
 					   "(codigo string, "+
 					   "lugarInteres string, "+
+					   "ciudad string, "+
 					   "valoracion double, "+
 					   "precio double, "+
 					   "duracion double)");
@@ -307,5 +308,7 @@ public class BD {
 		}
 		return ofertas;
 	}
+	
+	
 	
 }
