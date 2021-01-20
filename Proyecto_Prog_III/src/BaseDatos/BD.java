@@ -309,6 +309,27 @@ public class BD {
 		return ofertas;
 	}
 	
+	public static ArrayList<String> destinosVisita() {
+		Connection con = BD.initBD();
+		ArrayList<String> destinos = new ArrayList<>();
+		String query = "SELECT direccion FROM Visitas";
+		Statement st = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String destino = rs.getString("direccion");
+				destinos.add(destino);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		return destinos;
+	}
+	
 	public static ArrayList<Visita> obtenerVisitasDestino(String destino){
 		ArrayList<Visita> visitas = new ArrayList<>();
 		String query = "SELECT * FROM Visitas WHERE direccion='"+destino+"'";
