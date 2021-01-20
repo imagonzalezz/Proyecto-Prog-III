@@ -335,8 +335,30 @@ public class BD {
 		}
 		return visitas;
 	}
-	 public static ArrayList<Vuelo> obtenerVuelosOrigen(String destino){
+	 public static ArrayList<Vuelo> obtenerVuelosOrigen(String ciudad){
 		 ArrayList<Vuelo> vuelos = new ArrayList<>();
+		 String query = "SELECT * FROM Vuelos WHERE origen='" + ciudad + "'";
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String codigo = rs.getString("codigo");
+				String origen = rs.getString("origen");
+				String destino = rs.getString("destino");
+				String fechaYHora = rs.getString("fechaYHora");
+				double precio = rs.getDouble("precio");
+				double duracion = rs.getDouble("duracion");
+				Vuelo v = new Vuelo(codigo, origen, destino, fechaYHora, duracion, precio);
+				vuelos.add(v);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
 		 return vuelos;
 	 }
 }
