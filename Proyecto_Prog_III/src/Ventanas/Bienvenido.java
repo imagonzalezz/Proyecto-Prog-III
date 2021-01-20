@@ -126,23 +126,59 @@ public class Bienvenido extends JFrame {
 		
 		
 		
-		JLabelGraficoAjustado imagen = new JLabelGraficoAjustado("src/Ventanas/paris.jpg",900,500);
+		imagen = new JLabelGraficoAjustado("src/Ventanas/paris.jpg",900,500);
 		imagen.setBounds(0, 147, 798, 200);
 		contentPane.add(imagen);
 		
-		System.out.println("hola");
-	
+		Runnable r = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				String imagenes[] = {"src/Ventanas/paris.jpg","src/Ventanas/londres.jpg","src/Ventanas/londres.jpg","src/Ventanas/londres.jpg"};
+				float valorInicial = imagen.getOpacidad();
+				int i=imagenes.length-1;
+				int x = 2;
+				while(true) {
+					funcionOpacidad(x);
+					x++;
+					//imagen.setIcon(new ImageIcon("src/Ventanas/londres.jpg"));
+					//imagen = new JLabelGraficoAjustado("src/Ventanas/londres.jpg",900,500);
+					//imagen.setBounds(0, 147, 798, 200);
+					//contentPane.add(imagen);
+					imagen.setImagen(imagenes[i]);
+					i--;
+					if(i<0)
+						i = imagenes.length-1;
+					
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+			}
+		};
 		
+		Thread t = new Thread(r);
+		t.start();
 		
 	}
 	
 	
-	public static void funcionOpacidad() {
-		
-		for (int op=-100; op<=100; op++ ) {
-			imagen.setOpacidad( Math.abs(op*0.01f) );
-			try { Thread.sleep( 20 ); } catch (Exception e) {}  
-			System.out.println("hola");	
+	public static void funcionOpacidad(int x) {
+		if(x%2==0) {
+			for (int op=-100; op<=0; op++ ) {
+				imagen.setOpacidad( Math.abs(op*0.01f) );
+				try { Thread.sleep( 20 ); } catch (Exception e) {}  
+			}
+		}else {
+			for (int op=0; op<=100; op++ ) {
+				imagen.setOpacidad( Math.abs(op*0.01f) );
+				try { Thread.sleep( 20 ); } catch (Exception e) {}  
+			}
 		}
 	}
 }

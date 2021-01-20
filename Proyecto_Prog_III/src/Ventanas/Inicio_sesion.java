@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BaseDatos.BD;
+import Datos.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,7 +36,7 @@ public class Inicio_sesion extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
-	
+	public static Usuario usuario;
 
 	/**
 	 * Launch the application.
@@ -68,16 +70,16 @@ public class Inicio_sesion extends JFrame {
 		
 		setBounds(anchuraPantalla/4, alturaPantalla/4, 804, 614);
 		contentPane = new JPanel();
+		//contentPane = new PanelFondo("/Ventanas/londres.jpg", this.getWidth(), this.getHeight());
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout());
 		
 		JPanel panelCentro= new JPanel(new GridLayout(5,2));
 		
-		
 		JPanel panelLbl = new JPanel( new GridLayout(2,2));
 		JPanel panelSuperior= new JPanel();
-		JLabel tS= new JLabel("k");
+		JLabel tS= new JLabel(new ImageIcon(Bienvenido.class.getResource("/Ventanas/logo Deusto.png")));
 		tS.setForeground(new Color(240,240,240));
 		tS.setFont(new Font("Tahoma", Font.PLAIN, 98));
 		
@@ -124,7 +126,7 @@ public class Inicio_sesion extends JFrame {
 		
 		
 		
-		JButton btnNewButton_1 = new JButton("Iniciar Sesión");
+		JButton btnNewButton_1 = new JButton("Iniciar Sesi�n");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String user,pwd;
@@ -141,7 +143,7 @@ public class Inicio_sesion extends JFrame {
 			}
 			
 			else if(BD.comprobacionUsuario(user, pwd)==1) {
-				JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", null, 1);
+				JOptionPane.showMessageDialog(null, "Contrase�a Incorrecta", null, 1);
 				Inicio_sesion i= new Inicio_sesion();
 				i.setVisible(true);dispose();
 				
@@ -150,7 +152,7 @@ public class Inicio_sesion extends JFrame {
 				
 			}
 			else if(BD.comprobacionUsuario(user, pwd)==2) {
-				
+				usuario = BD.obtenerUsuario(user);
 				Eleccion_servicio el = new Eleccion_servicio();
 				el.setVisible(true);dispose();
 				
@@ -165,7 +167,8 @@ public class Inicio_sesion extends JFrame {
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.BOLD, 16));
 		
-		PanelBotones.add(btnNewButton);		PanelBotones.add(btnNewButton_1);
+		PanelBotones.add(btnNewButton);		
+		PanelBotones.add(btnNewButton_1);
 
 		
 		panelCentro.add(PanelBotones);

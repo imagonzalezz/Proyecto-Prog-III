@@ -12,16 +12,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Datos.TienePrecio;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Eleccion_servicio extends JFrame {
 
 	private JPanel contentPane;
-
+	public static ArrayList<TienePrecio> carrito = new ArrayList<>();
 	
 	
 	/**
