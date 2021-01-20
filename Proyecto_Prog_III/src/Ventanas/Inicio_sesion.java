@@ -146,6 +146,8 @@ public class Inicio_sesion extends JFrame {
 				i.setVisible(true);dispose();
 				
 				
+				
+				
 			}
 			else if(BD.comprobacionUsuario(user, pwd)==2) {
 				
