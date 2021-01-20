@@ -1,6 +1,13 @@
 package Datos;
 
-public class CompraOferta extends Compra{ //implements TienePrecio {
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import BaseDatos.BD;
+
+public class CompraOferta extends Compra implements TienePrecio {
 
 	protected int numAdultos;
 	protected int numMenores;
@@ -10,6 +17,7 @@ public class CompraOferta extends Compra{ //implements TienePrecio {
 		this.numAdultos = numAdultos;
 		this.numMenores = numMenores;
 		this.numDias = numDias;
+		this.precio = calcPrecio();
 	}
 	public int getNumAdultos() {
 		return numAdultos;
@@ -29,9 +37,26 @@ public class CompraOferta extends Compra{ //implements TienePrecio {
 	public void setNumDias(int numDias) {
 		this.numDias = numDias;
 	}
-	//@Override
-	//public double calcPrecio() {
-		//return (this.numAdultos*this.prec);
-	//}
+	
+	@Override
+	public double calcPrecio() {
+		Connection con = BD.initBD();
+		Statement st = null;
+		String query = "SELECT precioPorAdulto,precioPorMenor FROM Ofertas where codigo=" + this.codigoComprado;
+		double precio = 0;
+		double precioPorAdulto = 0;
+		double precioPorMenor = 0;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			precioPorAdulto = rs.getDouble("precioPorAdulto");
+			precioPorMenor = rs.getDouble("precioPorMenor");
+			precio = ((precioPorAdulto*this.numAdultos) + (precioPorMenor*this.numMenores)) * numDias;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return precio;
+	}
 	
 }

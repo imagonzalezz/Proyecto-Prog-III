@@ -231,10 +231,10 @@ public class BD {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				String query2 = "SELECT ciudad FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
+				String query2 = "SELECT direccion FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
 				ResultSet rs2 = st.executeQuery(query2);
 				while(rs2.next()) {
-					String destino = rs2.getString("ciudad");
+					String destino = rs2.getString("direccion");
 					destinos.add(destino);
 				}
 			}
