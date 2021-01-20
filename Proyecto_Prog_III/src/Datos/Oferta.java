@@ -10,6 +10,15 @@ public class Oferta extends TieneCod{
 	protected double precioPorAdulto;
 	protected double precioPorMenor;
 	
+	
+	public Oferta(String codigo, String codigoHotel, double precioPorAdulto, double precioPorMenor) {
+		super();
+		this.codigo = codigo;
+		this.codigoHotel = codigoHotel;
+		this.precioPorAdulto = precioPorAdulto;
+		this.precioPorMenor = precioPorMenor;
+	}
+
 	public Oferta(String codigoHotel, double precioPorAdulto, double precioPorMenor) {
 		super();
 		this.codigoHotel = codigoHotel;

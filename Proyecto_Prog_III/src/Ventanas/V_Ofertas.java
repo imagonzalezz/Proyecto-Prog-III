@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BaseDatos.BD;
+import Datos.Oferta;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -21,6 +23,7 @@ import javax.swing.JComboBox;
 public class V_Ofertas extends JFrame {
 
 	private JPanel contentPane;
+	JComboBox<String> aBox;
 
 	/**
 	 * Launch the application.
@@ -38,17 +41,17 @@ public class V_Ofertas extends JFrame {
 		});
 	}
 
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
 	public V_Ofertas() {
 		
-//		JComboBox aBox = new JComboBox();
-//		for (String oferta : BD.) {
-//			
-//		}
-//		aBox.add(comp)
-// 		
+	
+ 		
 		int alturaPantalla;
 		int anchuraPantalla;
 		Toolkit mipantalla = Toolkit.getDefaultToolkit(); 
@@ -62,8 +65,17 @@ public class V_Ofertas extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(3, 3, 0, 0));
+		contentPane.setLayout(new BorderLayout());
 		
+		ArrayList<String> destinos= BD.destinosOfertas();
+		
+		String opciones []= {};
+		for (int i = 0; i <destinos.size(); i++) {
+			opciones[i]=destinos.get(i);
+			
+		}
+		aBox= new JComboBox<String>(opciones);		
+		contentPane.add(aBox);
 	
 	}
 }

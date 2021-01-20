@@ -200,6 +200,8 @@ public class BD {
 	 * 			1: Existe un usuario con ese nombre de usuario pero la contraseña no coincide
 	 * 			2: Existe un usuario con ese nombre de usuario y la contraseña coincide
 	 */
+	
+	
 	public static int comprobacionUsuario(String usuario, String contrasenya) {
 		Connection con = BD.initBD();
 		int resultado = 0;
@@ -218,9 +220,34 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			cerrarBD(con, st);
 		}
 		return resultado;
 	}
+	
+	public static Usuario obtenerUsuario(String usuario) {
+		Connection con = BD.initBD();
+		String query = "select * from Usuarios where usuario = '"+usuario+"'";
+		Statement st = null;
+		Usuario u = null;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String c = rs.getString("contrasenya");
+				String co = rs.getString("correo");
+				u = new Usuario(usuario, c, co);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrarBD(con, st);
+		}
+		return u;
+	}
+	
 	
 	public static ArrayList<String> destinosOfertas(){
 		Connection con = BD.initBD();
@@ -231,7 +258,7 @@ public class BD {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				String query2 = "SELECT direccion FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
+				String query2 = "SELECT direccion FROM Hoteles WHERE codigo='" + rs.getString("codigoHotel")+"'";
 				ResultSet rs2 = st.executeQuery(query2);
 				while(rs2.next()) {
 					String destino = rs2.getString("direccion");
@@ -242,9 +269,43 @@ public class BD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			BD.cerrarBD(con, st);
+			cerrarBD(con, st);
 		}
 		return destinos;
+	}
+	
+	public static ArrayList<Oferta> obtenerOfertasDestino(String destino){
+		ArrayList<Oferta> ofertas = new ArrayList<>();
+		
+		String query1 = "SELECT codigo FROM Hoteles WHERE direccion='"+destino+"'";
+		Connection con = BD.initBD();
+		Statement st = null;
+		try {
+		
+			st = con.createStatement();
+			ResultSet rs1 = st.executeQuery(query1);
+			while(rs1.next()) {
+			
+				String codigo = rs1.getString("codigo");
+			
+				String query = "SELECT * FROM Ofertas WHERE codigoHotel='"+codigo+"'";
+				ResultSet rs = st.executeQuery(query);
+				while(rs.next()) {
+					String codigoOferta = rs.getString("codigo");
+					String codigoHotel = rs.getString("codigoHotel");
+					double precioPorAdulto = rs.getDouble("precioPorAdulto");
+					double precioPorMenor = rs.getDouble("precioPorMenor");
+					Oferta o = new Oferta(codigoOferta, codigoHotel, precioPorAdulto, precioPorMenor);
+					ofertas.add(o);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrarBD(con, st);
+		}
+		return ofertas;
 	}
 	
 }
