@@ -324,8 +324,8 @@ public class BD {
 				double valoracion = rs.getDouble("valoracion");
 				double precio = rs.getDouble("precio");
 				double duracion = rs.getDouble("duracion");
-				Visita v = new Visita(lugarInteres, direccion, valoracion, duracion, precio);
-				visitas.add(v);
+				Visita vi = new Visita(codigo, lugarInteres, direccion, valoracion, duracion, precio);
+				visitas.add(vi);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -335,5 +335,8 @@ public class BD {
 		}
 		return visitas;
 	}
-	
+	 public static ArrayList<Vuelo> obtenerVuelosOrigen(String destino){
+		 ArrayList<Vuelo> vuelos = new ArrayList<>();
+		 return vuelos;
+	 }
 }
