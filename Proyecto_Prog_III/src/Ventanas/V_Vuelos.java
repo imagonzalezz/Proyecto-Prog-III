@@ -64,11 +64,11 @@ public class V_Vuelos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-contentPane.setLayout(new BorderLayout());
+		contentPane.setLayout(new BorderLayout());
 		
-		ArrayList<String> destinos= BD.destinosOfertas();
+		ArrayList<String> origenes= BD.origenesVuelo();
 		aBox = new JComboBox<>();
-		for (String d: destinos) {
+		for (String d: origenes) {
 			aBox.addItem(d);
 		}
 		pNorte = new JPanel();	
@@ -112,6 +112,7 @@ contentPane.setLayout(new BorderLayout());
 						double precio = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 4)));
 						double duracion = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 5)));
 						Vuelo vuelo = new Vuelo(origen, destino, fechaYHora, precio,duracion);
+						System.out.println("g");
 						int numPersonas = Integer.parseInt(JOptionPane.showInputDialog("Introduce el número de personas: "));
 						CompraProducto co = new CompraProducto(Inicio_sesion.usuario, codigoVuelo,  numPersonas);
 						Eleccion_servicio.carrito.add(co);

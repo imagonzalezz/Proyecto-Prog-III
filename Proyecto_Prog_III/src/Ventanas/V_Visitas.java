@@ -70,7 +70,7 @@ public class V_Visitas extends JFrame {
 		
 contentPane.setLayout(new BorderLayout());
 		
-		ArrayList<String> destinos= BD.destinosOfertas();
+		ArrayList<String> destinos= BD.destinosVisita();
 		aBox = new JComboBox<>();
 		for (String d: destinos) {
 			aBox.addItem(d);
