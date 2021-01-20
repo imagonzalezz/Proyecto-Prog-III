@@ -356,6 +356,28 @@ public class BD {
 		}
 		return visitas;
 	}
+	
+	 public static ArrayList<String> origenesVuelo(){
+		 Connection con = BD.initBD();
+		 ArrayList<String> origenes = new ArrayList<>();
+		 String query = "SELECT origen FROM Vuelos";
+		 Statement st = null;
+		 try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String origen = rs.getString("origen");
+				origenes.add(origen);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		 return origenes;
+	 }
+	
 	 public static ArrayList<Vuelo> obtenerVuelosOrigen(String ciudad){
 		 ArrayList<Vuelo> vuelos = new ArrayList<>();
 		 String query = "SELECT * FROM Vuelos WHERE origen='" + ciudad + "'";
