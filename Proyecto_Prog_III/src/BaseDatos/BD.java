@@ -55,7 +55,7 @@ public class BD {
 			statement.executeUpdate("create table Visitas "+
 					   "(codigo string, "+
 					   "lugarInteres string, "+
-					   "ciudad string, "+
+					   "direccion string, "+
 					   "valoracion double, "+
 					   "precio double, "+
 					   "duracion double)");
@@ -149,7 +149,7 @@ public class BD {
 			}
 			else {
 				vi = (Visita) p;
-				query = "INSERT INTO Visitas VALUES('"+vi.getCodigo()+"','"+vi.getLugarInteres()+"','"+vi.getCiudad()+"',"+vi.getValoracion()+","+vi.getPrecio()+","+vi.getDuracion()+")";
+				query = "INSERT INTO Visitas VALUES('"+vi.getCodigo()+"','"+vi.getLugarInteres()+"','"+vi.getDireccion()+"',"+vi.getValoracion()+","+vi.getPrecio()+","+vi.getDuracion()+")";
 			}
 			st.executeUpdate(query);
 		} catch (SQLException e) {

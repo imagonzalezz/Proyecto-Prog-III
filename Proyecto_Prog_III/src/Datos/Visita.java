@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Visita extends Producto {
 
 	protected String lugarInteres;
-	protected String ciudad;
+	protected String direccion;
 	protected double valoracion;
 	
-	public Visita(String lugarInteres,String ciudad, double valoracion, double duracion, double precio) {
+	public Visita(String lugarInteres,String direccion, double valoracion, double duracion, double precio) {
 		this.lugarInteres = lugarInteres;
-		this.ciudad = ciudad;
+		this.direccion = direccion;
 		this.valoracion = valoracion;
 		this.duracion = duracion;
 		this.precio = precio;
@@ -27,12 +27,12 @@ public class Visita extends Producto {
 		this.lugarInteres = lugarInteres;
 	}
 
-	public String getCiudad() {
-		return ciudad;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public double getValoracion() {
