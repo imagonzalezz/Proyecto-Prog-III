@@ -200,6 +200,8 @@ public class BD {
 	 * 			1: Existe un usuario con ese nombre de usuario pero la contraseña no coincide
 	 * 			2: Existe un usuario con ese nombre de usuario y la contraseña coincide
 	 */
+	
+	
 	public static int comprobacionUsuario(String usuario, String contrasenya) {
 		Connection con = BD.initBD();
 		int resultado = 0;
@@ -234,7 +236,7 @@ public class BD {
 				String query2 = "SELECT ciudad FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
 				ResultSet rs2 = st.executeQuery(query2);
 				while(rs2.next()) {
-					String destino = rs2.getString("ciudad");
+					String destino = rs2.getString("direccion");
 					destinos.add(destino);
 				}
 			}
