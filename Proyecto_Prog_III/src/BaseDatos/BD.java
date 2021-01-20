@@ -223,22 +223,19 @@ public class BD {
 		}
 		return resultado;
 	}
-	
 	public static ArrayList<String> destinosOfertas(){
 		Connection con = BD.initBD();
 		ArrayList<String> destinos = new ArrayList<>();
-		String query = "SELECT codigoHotel FROM Ofertas";
+		String query = "SELECT direccion FROM Hoteles";
 		Statement st = null;
 		try {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				String query2 = "SELECT ciudad FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
-				ResultSet rs2 = st.executeQuery(query2);
-				while(rs2.next()) {
-					String destino = rs2.getString("direccion");
-					destinos.add(destino);
-				}
+				String destino = rs.getString("direccion");
+				destinos.add(destino);
+				
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -248,5 +245,30 @@ public class BD {
 		}
 		return destinos;
 	}
+	
+//	public static ArrayList<String> destinosOfertas(){
+//		Connection con = BD.initBD();
+//		ArrayList<String> destinos = new ArrayList<>();
+//		String query = "SELECT codigoHotel FROM Ofertas";
+//		Statement st = null;
+//		try {
+//			st = con.createStatement();
+//			ResultSet rs = st.executeQuery(query);
+//			while(rs.next()) {
+//				String query2 = "SELECT direccion FROM Hoteles WHERE codigo=" + rs.getString("codigoHotel");
+//				ResultSet rs2 = st.executeQuery(query2);
+//				while(rs2.next()) {
+//					String destino = rs2.getString("direccion");
+//					destinos.add(destino);
+//				}
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			BD.cerrarBD(con, st);
+//		}
+//		return destinos;
+//	}
 	
 }

@@ -44,8 +44,6 @@ public class V_Ofertas extends JFrame {
 	
 	
 	
-	
-	
 	/**
 	 * Create the frame.
 	 */
@@ -72,7 +70,6 @@ public class V_Ofertas extends JFrame {
 		
 		String opciones []= {};
 		for (int i = 0; i <destinos.size(); i++) {
-			System.out.println("f");
 			opciones[i]=destinos.get(i);
 			
 		}
