@@ -112,8 +112,8 @@ contentPane.setLayout(new BorderLayout());
 						String lugarDeInteres = String.valueOf(modeloTabla.getValueAt(fila, 1));
 						String ciudad = String.valueOf(modeloTabla.getValueAt(fila, 2));
 						double valoracion = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 3)));
-						double precio = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 3)));
-						double duracion = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 3)));
+						double precio = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 4)));
+						double duracion = Double.parseDouble(String.valueOf(modeloTabla.getValueAt(fila, 5)));
 						Visita v= new Visita(codigoVisita, lugarDeInteres, ciudad, valoracion, precio, duracion);
 						
 						int numPersonas = Integer.parseInt(JOptionPane.showInputDialog("Introduce el número de personas: "));
