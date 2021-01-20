@@ -8,6 +8,15 @@ public class Vuelo extends Producto {
 	protected String destino; 
 	protected String fechaYHora;
 	
+	public Vuelo(String codigo,String origen, String destino, String fechaYHora, double duracion, double precio) {
+		this.origen = origen;
+		this.codigoProducto = codigo;
+		this.destino = destino;
+		this.fechaYHora = fechaYHora;
+		this.duracion = duracion;
+		this.precio = precio;
+	}
+	
 	public Vuelo(String origen, String destino, String fechaYHora, double duracion, double precio) {
 		this.origen = origen;
 		this.destino = destino;
