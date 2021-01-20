@@ -44,6 +44,7 @@ public class V_Ofertas extends JFrame {
 	
 	
 	
+	
 	/**
 	 * Create the frame.
 	 */
