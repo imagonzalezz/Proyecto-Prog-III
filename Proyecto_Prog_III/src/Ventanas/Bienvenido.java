@@ -24,6 +24,7 @@ public class Bienvenido extends JFrame {
 
 	private JPanel contentPane;
 	private static JLabelGraficoAjustado imagen;
+	public boolean hiloFuncionando;
 
 	/**
 	 * Launch the application.
@@ -139,7 +140,7 @@ public class Bienvenido extends JFrame {
 				float valorInicial = imagen.getOpacidad();
 				int i=imagenes.length-1;
 				int x = 2;
-				while(true) {
+				while(hiloFuncionando) {
 					funcionOpacidad(x);
 					x++;
 					//imagen.setIcon(new ImageIcon("src/Ventanas/londres.jpg"));
@@ -163,6 +164,7 @@ public class Bienvenido extends JFrame {
 		};
 		
 		Thread t = new Thread(r);
+		hiloFuncionando = true;
 		t.start();
 		
 	}
