@@ -1,6 +1,6 @@
 package Datos;
 
-public class CompraOferta extends Compra {
+public class CompraOferta extends Compra{ //implements TienePrecio {
 
 	protected int numAdultos;
 	protected int numMenores;
@@ -29,5 +29,9 @@ public class CompraOferta extends Compra {
 	public void setNumDias(int numDias) {
 		this.numDias = numDias;
 	}
+	//@Override
+	//public double calcPrecio() {
+		//return (this.numAdultos*this.prec);
+	//}
 	
 }

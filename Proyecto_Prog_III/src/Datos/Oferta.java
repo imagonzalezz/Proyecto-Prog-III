@@ -15,8 +15,8 @@ public class Oferta extends TieneCod{
 		this.codigoHotel = codigoHotel;
 		this.precioPorAdulto = precioPorAdulto;
 		this.precioPorMenor = precioPorMenor;
-		ArrayList<String> codigos = codigosEnAL("Usuarios");
-		String codigo = generarCodigo(codigos, "US", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
+		ArrayList<String> codigos = codigosEnAL("Ofertas");
+		String codigo = generarCodigo(codigos, "OF", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
 		this.setCodigo(codigo);
 	}
 
