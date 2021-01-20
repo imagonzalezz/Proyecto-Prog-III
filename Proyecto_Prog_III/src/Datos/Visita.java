@@ -8,6 +8,15 @@ public class Visita extends Producto {
 	protected String direccion;
 	protected double valoracion;
 	
+	public Visita(String codigo,String lugarInteres,String direccion, double valoracion, double duracion, double precio) {
+		this.lugarInteres = lugarInteres;
+		this.codigoProducto = codigo;
+		this.direccion = direccion;
+		this.valoracion = valoracion;
+		this.duracion = duracion;
+		this.precio = precio;
+	}
+	
 	public Visita(String lugarInteres,String direccion, double valoracion, double duracion, double precio) {
 		this.lugarInteres = lugarInteres;
 		this.direccion = direccion;
