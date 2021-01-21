@@ -10,6 +10,11 @@ import BaseDatos.BD;
 
 public abstract class TieneCod {
 
+	/**
+	 * 
+	 * @param tabla tabla de la base de datos de la que se quiera conocer los codigos
+	 * @return ArrayList con todos los codigos que haya en la base de datos
+	 */
 	public ArrayList<String> codigosEnAL(String tabla){
 		ArrayList<String> codigos = new ArrayList<>();
 		Connection con = BD.initBD();
@@ -30,6 +35,14 @@ public abstract class TieneCod {
 		
 	}
 	
+	/**
+	 * genera un codigo para almacenarlo en la base de datos
+	 * @param codigos ArrayList de codigos existentes en la base de datos
+	 * @param prefijo prefijo para el codigo
+	 * @param cod numero para el codigo
+	 * @param indice indice con el que se itera en el ArrayList
+	 * @return
+	 */
 	public String generarCodigo(ArrayList<String> codigos, String prefijo, int cod, int indice) {
 		if(indice<0)
 			return prefijo + cod;

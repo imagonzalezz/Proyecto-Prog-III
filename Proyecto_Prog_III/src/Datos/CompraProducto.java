@@ -11,20 +11,38 @@ public class CompraProducto extends Compra implements TienePrecio {
 	
 	protected int cantidad;
 
+	/**
+	 * 
+	 * @param usuario usuario que ha hecho la compra
+	 * @param codigoComprado codigo del producto que se ha comprado
+	 * @param cantidad numero de productos comprados
+	 */
 	public CompraProducto(Usuario usuario, String codigoComprado, int cantidad) {
 		super(usuario, codigoComprado);
 		this.cantidad = cantidad;
 		this.precio = calcPrecio();
 	}
 
+	/**
+	 * 
+	 * @return numero de productos comprados
+	 */
 	public int getCantidad() {
 		return cantidad;
 	}
 
+	/**
+	 * 
+	 * @param cantidad numero de productos comprados
+	 */
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
 	
+	/**
+	 * 
+	 * @return producto relacionado con la compra
+	 */
 	public Producto getProducto() {
 		Producto p = BD.obtenerProducto(codigoComprado);
 		return p;
@@ -42,6 +60,9 @@ public class CompraProducto extends Compra implements TienePrecio {
 		}
 	}
 
+	/**
+	 * Calcula el precio de la compra teniendo en cuenta el precio y la cantidad
+	 */
 	@Override
 	public double calcPrecio() {
 		Connection con = BD.initBD();

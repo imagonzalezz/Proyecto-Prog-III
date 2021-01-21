@@ -16,6 +16,13 @@ public class Hotel extends TieneCod{
 	protected int estrellas;
 
 
+	/**
+	 * Constructor para hacer una instancia de un hotel que ya esta en la base de datos
+	 * @param codigo codigo del hotel
+	 * @param nombre nombre del hotel
+	 * @param ciudad ciudad en la que se ubica
+	 * @param estrellas numero de estrellas del hotel
+	 */
 	public Hotel(String codigo,String nombre, String ciudad, int estrellas) {
 		super();
 		this.codigo = codigo;
@@ -25,10 +32,10 @@ public class Hotel extends TieneCod{
 	}
 	
 	/**
-	 * 
-	 * @param nombre Nombre
-	 * @param direccion Direccion
-	 * @param estrellas Número de estrellas
+	 * Constructor para hacer una instancia de un hotel que no esta en la base de datos
+	 * @param nombre nombre del hotel
+	 * @param direccion ciudad en la que se ubica
+	 * @param estrellas numero de estrellas del hotel
 	 */
 	public Hotel(String nombre, String ciudad, int estrellas) {
 		super();
@@ -40,34 +47,66 @@ public class Hotel extends TieneCod{
 		this.setCodigo(codigo);
 	}
 
+	/**
+	 * 
+	 * @return nombre del hotel
+	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * 
+	 * @param nombre nombre del hotel
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * 
+	 * @return ciudad en la que se ubica
+	 */
 	public String getCiudad() {
 		return ciudad;
 	}
 
+	/**
+	 * 
+	 * @param ciudad ciudad en la que se ubica
+	 */
 	public void setDireccion(String ciudad) {
 		this.ciudad = ciudad;
 	}
 
+	/**
+	 * 
+	 * @return numero de estrellas del hotel
+	 */
 	public int getEstrellas() {
 		return estrellas;
 	}
 
+	/**
+	 * 
+	 * @param estrellas numero de estrellas del hotel
+	 */
 	public void setEstrellas(int estrellas) {
 		this.estrellas = estrellas;
 	}
 
+	/**
+	 * 
+	 * @return codigo del hotel
+	 */
 	public String getCodigo() {
 		return codigo;
 	}
 
+	/**
+	 * 
+	 * @param codigo codigo del hotel
+	 */
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}

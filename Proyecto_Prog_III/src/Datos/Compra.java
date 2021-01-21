@@ -12,26 +12,50 @@ public abstract class Compra {
 		this.codigoComprado = codigoComprado;
 	}
 
+	/**
+	 * 
+	 * @return usuario que ha hecho la compra
+	 */
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+	/**
+	 * 
+	 * @param usuario usuario que ha hecho la compra
+	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * 
+	 * @return codigo de lo que se ha comprado
+	 */
 	public String getCodigoComprado() {
 		return codigoComprado;
 	}
 
+	/**
+	 * 
+	 * @param codigoComprado codigo de lo que se ha comprado
+	 */
 	public void setCodigoComprado(String codigoComprado) {
 		this.codigoComprado = codigoComprado;
 	}
 
+	/**
+	 * 
+	 * @return precio de la compra
+	 */
 	public double getPrecio() {
 		return precio;
 	}
 
+	/**
+	 * 
+	 * @param precio precio de la compra
+	 */
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
