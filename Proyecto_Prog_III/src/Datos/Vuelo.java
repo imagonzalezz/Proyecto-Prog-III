@@ -8,6 +8,15 @@ public class Vuelo extends Producto {
 	protected String destino; 
 	protected String fechaYHora;
 	
+	/**
+	 * Constructor para instanciar un vuelo que ya existe en la base de datos
+	 * @param codigo codigo del vuelo
+	 * @param origen ciudad de origen
+	 * @param destino ciudad de destino
+	 * @param fechaYHora fecha y hora en formato dd/mm/aaaa hh:mm
+	 * @param duracion duracion del vuelo en minutos
+	 * @param precio precio del billete
+	 */
 	public Vuelo(String codigo,String origen, String destino, String fechaYHora, double duracion, double precio) {
 		this.origen = origen;
 		this.codigoProducto = codigo;
@@ -17,6 +26,14 @@ public class Vuelo extends Producto {
 		this.precio = precio;
 	}
 	
+	/**
+	 * Constructor para instanciar una visita que no existe en la base de datos
+	 * @param origen ciudad de origen
+	 * @param destino ciudad de destino
+	 * @param fechaYHora fecha y hora en formato dd/mm/aaaa hh:mm
+	 * @param duracion duracion del vuelo en minutos
+	 * @param precio precio del billete
+	 */
 	public Vuelo(String origen, String destino, String fechaYHora, double duracion, double precio) {
 		this.origen = origen;
 		this.destino = destino;
@@ -28,26 +45,50 @@ public class Vuelo extends Producto {
 		this.setCodigo(codigo);
 	}
 
+	/**
+	 * 
+	 * @return ciudad de origen
+	 */
 	public String getOrigen() {
 		return origen;
 	}
 
+	/**
+	 * 
+	 * @param origen ciudad de origen
+	 */
 	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
 
+	/**
+	 * 
+	 * @return ciudad de destino
+	 */
 	public String getDestino() {
 		return destino;
 	}
 
+	/**
+	 * 
+	 * @param destino ciudad de destino
+	 */
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
 
+	/**
+	 * 
+	 * @return fecha y hora en formato dd/mm/aaaa hh:mm
+	 */
 	public String getFechaYHora() {
 		return fechaYHora;
 	}
 
+	/**
+	 * 
+	 * @param fechaYHora fecha y hora en formato dd/mm/aaaa hh:mm
+	 */
 	public void setFechaYHora(String fechaYHora) {
 		this.fechaYHora = fechaYHora;
 	}
