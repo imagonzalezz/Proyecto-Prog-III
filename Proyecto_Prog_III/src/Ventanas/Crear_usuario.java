@@ -33,7 +33,7 @@ public class Crear_usuario extends JFrame {
 	private JTextField textFieldUsuario;
 	private JButton btnInicio;
 	private JTextField textFieldCorreo;
-	private JTextField textFieldContrasenya;
+	private JPasswordField textFieldContrasenya;
 	private JTextField textFieldConfirmarContra;
 	
 
@@ -99,7 +99,7 @@ public class Crear_usuario extends JFrame {
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_1);
 		
-		textFieldContrasenya = new JTextField();
+		textFieldContrasenya = new JPasswordField();
 		textFieldContrasenya.setColumns(10);
 		contentPane.add(textFieldContrasenya);
 		
@@ -108,7 +108,7 @@ public class Crear_usuario extends JFrame {
 		lblNewLabel_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel_2);
 		
-		textFieldConfirmarContra = new JTextField();
+		textFieldConfirmarContra = new JPasswordField();
 		textFieldConfirmarContra.setColumns(10);
 		contentPane.add(textFieldConfirmarContra);
 		
