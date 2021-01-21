@@ -145,7 +145,7 @@ public class V_Vuelos extends JFrame {
 		ArrayList<Vuelo> vuelos = BD.obtenerVuelosOrigen(destino);
 		for(Vuelo v: vuelos) {
 			System.out.println(v);
-			String fila[] = {v.getCodigo(),String.valueOf(v.getOrigen()),String.valueOf(v.getDestino()),String.valueOf(v.getFechaYHora()), String.valueOf(v.getPrecio()),String.valueOf(v.getDuracion())};
+			String fila[] = {v.getCodigo(),String.valueOf(v.getOrigen()),String.valueOf(v.getDestino()),String.valueOf(v.getFechaYHora()), String.valueOf(v.getPrecio()+" €"),String.valueOf(v.getDuracion()+" Horas")};
 			modeloTabla.addRow(fila);
 		}
 	}
