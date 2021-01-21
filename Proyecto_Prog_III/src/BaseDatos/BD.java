@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
+import Datos.CompraOferta;
+import Datos.CompraProducto;
 import Datos.Hotel;
 import Datos.Oferta;
 import Datos.Producto;
+import Datos.TienePrecio;
 import Datos.Usuario;
 import Datos.Visita;
 import Datos.Vuelo;
@@ -494,6 +498,93 @@ public class BD {
 			cerrarBD(con, st);
 		}
 		 return p;
+	 }
+	 
+	 public static void anyadirOferta(CompraOferta o) {
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 String query = "INSERT INTO ComprasOfertas VALUES('"+o.getCodigoComprado()+"','"+o.getUsuario()+"',"+o.getNumDias()+","+o.getNumAdultos()+","+o.getNumMenores()+")";
+		 try {
+			st = con.createStatement();
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+	 }
+	 
+	 public static void anyadirProducto(CompraProducto p) {
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 String tabla = "ComprasVuelos";
+		 String query = "INSERT INTO "+tabla+" VALUES('"+p.getCodigoComprado()+"','"+p.getUsuario()+"',"+p.getCantidad()+")";
+		 try {
+			st = con.createStatement();
+			if(p.getCodigoComprado().substring(0, 2).equals("VI")) 
+				tabla = "ComprasVisitas";
+			st.executeUpdate(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+	 }
+	 
+	 public static TreeMap<String,ArrayList<TienePrecio>> obtenerComprasPorUsuario(){
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 TreeMap<String,ArrayList<TienePrecio>> tmCompras = new TreeMap<>();
+		 String tabla = "ComprasOfertas";
+		 String query = "SELECT * FROM " +tabla;
+		 try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String codigoComprado = rs.getString("codigo");
+				String u = rs.getString("usuario");
+				Usuario usuario = new Usuario(u);
+				int numDias = rs.getInt("numDias");
+				int numAdultos = rs.getInt("numAdultos");
+				int numMenores = rs.getInt("numMenores");
+				CompraOferta co = new CompraOferta(usuario, codigoComprado, numAdultos, numMenores, numDias);
+				if(!tmCompras.containsKey(co.getUsuario().getUsuario()))
+					tmCompras.put(co.getUsuario().getUsuario(), new ArrayList<TienePrecio>());
+				tmCompras.get(co.getUsuario().getUsuario()).add(co);
+			}
+			tabla = "ComprasVisitas";
+			ResultSet rs2 = st.executeQuery(query);
+			while(rs2.next()) {
+				String codigoComprado = rs.getString("codigo");
+				String u = rs.getString("usuario");
+				Usuario usuario = new Usuario(u);
+				int cantidad = rs.getInt("cantidad");
+				CompraProducto cp = new CompraProducto(usuario, codigoComprado, cantidad);
+				if(!tmCompras.containsKey(cp.getUsuario().getUsuario()))
+					tmCompras.put(cp.getUsuario().getUsuario(), new ArrayList<TienePrecio>());
+				tmCompras.get(cp.getUsuario().getUsuario()).add(cp);
+			}
+			tabla = "ComprasVuelos";
+			ResultSet rs3 = st.executeQuery(query);
+			while(rs3.next()) {
+				String codigoComprado = rs.getString("codigo");
+				String u = rs.getString("usuario");
+				Usuario usuario = new Usuario(u);
+				int cantidad = rs.getInt("cantidad");
+				CompraProducto cp = new CompraProducto(usuario, codigoComprado, cantidad);
+				if(!tmCompras.containsKey(cp.getUsuario().getUsuario()))
+					tmCompras.put(cp.getUsuario().getUsuario(), new ArrayList<TienePrecio>());
+				tmCompras.get(cp.getUsuario().getUsuario()).add(cp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		 return tmCompras;
 	 }
 	 
 }

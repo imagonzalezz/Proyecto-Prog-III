@@ -6,8 +6,9 @@ public class Usuario {
 	protected String contrasenya;
 	protected String correo;
 	
-	public Usuario() {
+	public Usuario(String usuario) {
 		super();
+		this.usuario = usuario;
 	}
 
 	public Usuario(String usuario, String contrasenya, String correo) {
