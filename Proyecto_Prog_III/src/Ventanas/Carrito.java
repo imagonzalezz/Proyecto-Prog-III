@@ -8,12 +8,19 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Datos.Producto;
+import Datos.TienePrecio;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 
 public class Carrito extends JFrame {
 
 	private JPanel contentPane;
+	JList list;
+	DefaultListModel<String> modeloLista;
 
 	/**
 	 * Launch the application.
@@ -60,8 +67,31 @@ public class Carrito extends JFrame {
 		contentPane.add(btnNewButton, BorderLayout.SOUTH);
 		
 		
-		JList list = new JList();
+		
+		
+		modeloLista= new DefaultListModel<String>();
+		for (TienePrecio p : Eleccion_servicio.carrito) {
+			modeloLista.addElement(p.toString());
+		}
+		list=new JList();
+		list.setModel(modeloLista);
+		
+		
 		contentPane.add(list, BorderLayout.CENTER);
+		
+	
+		
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+

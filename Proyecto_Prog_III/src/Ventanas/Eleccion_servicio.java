@@ -27,7 +27,6 @@ public class Eleccion_servicio extends JFrame {
 
 	private JPanel contentPane;
 	public static ArrayList<TienePrecio> carrito = new ArrayList<>();
-	private JButton cerrarSesion;
 	
 	
 	/**
@@ -74,6 +73,17 @@ public class Eleccion_servicio extends JFrame {
 		
 		JPanel panelf2 = new JPanel(new GridLayout(1,3));
 		
+		JButton carrito= new JButton("Carrito");
+		contentPane.add(carrito,BorderLayout.NORTH);
+		
+		carrito.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Carrito c= new Carrito();
+				c.setVisible(true);dispose();
+			}
+		});
 		
 		JButton cerrarSesion= new JButton("Cerrar sesion");
 		contentPane.add(cerrarSesion, BorderLayout.SOUTH);
