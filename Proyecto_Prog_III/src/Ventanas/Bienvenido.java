@@ -170,6 +170,8 @@ public class Bienvenido extends JFrame {
 		hiloFuncionando = true;
 		t.start();
 		
+		setVisible(true);
+		
 	}
 	
 	

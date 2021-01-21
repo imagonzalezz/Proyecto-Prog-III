@@ -288,7 +288,7 @@ public class BD {
 			st = con.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while(rs.next()) {
-				String query2 = "SELECT direccion FROM Hoteles WHERE codigo='" + rs.getString("codigoHotel")+"'";
+				String query2 = "SELECT DISTINCT(direccion) FROM Hoteles WHERE codigo='" + rs.getString("codigoHotel")+"'";
 				ResultSet rs2 = st.executeQuery(query2);
 				while(rs2.next()) {
 					String destino = rs2.getString("direccion");
@@ -350,7 +350,7 @@ public class BD {
 	public static ArrayList<String> destinosVisita() {
 		Connection con = BD.initBD();
 		ArrayList<String> destinos = new ArrayList<>();
-		String query = "SELECT direccion FROM Visitas";
+		String query = "SELECT DISTINCT(direccion) FROM Visitas";
 		Statement st = null;
 		try {
 			st = con.createStatement();
@@ -407,7 +407,7 @@ public class BD {
 	 public static ArrayList<String> origenesVuelo(){
 		 Connection con = BD.initBD();
 		 ArrayList<String> origenes = new ArrayList<>();
-		 String query = "SELECT origen FROM Vuelos";
+		 String query = "SELECT DISTINCT(origen) FROM Vuelos";
 		 Statement st = null;
 		 try {
 			st = con.createStatement();
@@ -502,7 +502,7 @@ public class BD {
 			if(rs.next()) {
 				String codigo = rs.getString("codigo");
 				String nombre = rs.getString("nombre");
-				String ciudad = rs.getString("ciudad");
+				String ciudad = rs.getString("direccion");
 				int estrellas = rs.getInt("estrellas");
 				h = new Hotel(codigo, nombre, ciudad, estrellas);
 			}
@@ -569,7 +569,7 @@ public class BD {
 	 public static void anyadirCompraOferta(CompraOferta o) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
-		 String query = "INSERT INTO ComprasOfertas VALUES('"+o.getCodigoComprado()+"','"+o.getUsuario()+"',"+o.getNumDias()+","+o.getNumAdultos()+","+o.getNumMenores()+")";
+		 String query = "INSERT INTO ComprasOfertas VALUES('"+o.getCodigoComprado()+"','"+o.getUsuario().getUsuario()+"',"+o.getNumDias()+","+o.getNumAdultos()+","+o.getNumMenores()+")";
 		 try {
 			st = con.createStatement();
 			st.executeUpdate(query);
@@ -589,7 +589,7 @@ public class BD {
 		 Connection con = BD.initBD();
 		 Statement st = null;
 		 String tabla = "ComprasVuelos";
-		 String query = "INSERT INTO "+tabla+" VALUES('"+p.getCodigoComprado()+"','"+p.getUsuario()+"',"+p.getCantidad()+")";
+		 String query = "INSERT INTO "+tabla+" VALUES('"+p.getCodigoComprado()+"','"+p.getUsuario().getUsuario()+"',"+p.getCantidad()+")";
 		 try {
 			st = con.createStatement();
 			if(p.getCodigoComprado().substring(0, 2).equals("VI")) 
@@ -659,6 +659,48 @@ public class BD {
 			cerrarBD(con, st);
 		}
 		 return tmCompras;
+	 }
+	 
+	 public static double obtenerPrecioCompraProducto(String codigoComprado, int cantidad) {
+		 Connection con = BD.initBD();
+			Statement st = null;
+			String query;
+			double precio = 0;
+			try {
+				st = con.createStatement();
+				if(codigoComprado.substring(0, 2).equals("VI")) {
+					query = "SELECT precio FROM Visitas WHERE codigo='" + codigoComprado+"'";
+				}else {
+					query = "SELECT precio FROM Vuelos WHERE codigo='" + codigoComprado+"'";
+				}
+				ResultSet rs = st.executeQuery(query);
+				if(rs.next())
+					precio = cantidad * rs.getDouble("precio");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 return precio;
+	 }
+	 
+	 public static double obtenerPrecioCompraOferta(String codigoComprado, int numAdultos, int numMenores, int numDias) {
+		 Connection con = BD.initBD();
+			Statement st = null;
+			String query = "SELECT precioPorAdulto,precioPorMenor FROM Ofertas where codigo='" + codigoComprado+"'";
+			double precio = 0;
+			double precioPorAdulto = 0;
+			double precioPorMenor = 0;
+			try {
+				st = con.createStatement();
+				ResultSet rs = st.executeQuery(query);
+				precioPorAdulto = rs.getDouble("precioPorAdulto");
+				precioPorMenor = rs.getDouble("precioPorMenor");
+				precio = ((precioPorAdulto*numAdultos) + (precioPorMenor*numMenores)) * numDias;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return precio;
 	 }
 	 
 }

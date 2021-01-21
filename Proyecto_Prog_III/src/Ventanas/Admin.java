@@ -105,7 +105,7 @@ public class Admin extends JFrame {
 				
 				Hotel hotel = new Hotel(nombre, ciudad, estrellas);
 				BD.anyadirHotel(hotel);
-				JOptionPane.showConfirmDialog(null, "Hotel añadido correctamente");
+				JOptionPane.showMessageDialog(null, "Hotel añadido correctamente");
 
 			}
 		});
@@ -119,7 +119,7 @@ public class Admin extends JFrame {
 
 				Oferta ofer= new Oferta(codHotel, precioA, precioM);
 				BD.anyadirOferta(ofer);
-				JOptionPane.showConfirmDialog(null, "Oferta añadida correctamente");
+				JOptionPane.showMessageDialog(null, "Oferta añadida correctamente");
 
 			}
 		});
@@ -139,7 +139,7 @@ public class Admin extends JFrame {
 				Producto vuelo= new Vuelo(origen, des, feyh, precio, duracion);
 				
 				BD.anyadirProducto(vuelo);
-				JOptionPane.showConfirmDialog(null, "Vuelo añadido correctamente");
+				JOptionPane.showMessageDialog(null, "Vuelo añadido correctamente");
 			}
 		});
 
@@ -159,7 +159,7 @@ public class Admin extends JFrame {
 				
 				
 				BD.anyadirProducto(visita);
-				JOptionPane.showConfirmDialog(null, "Visita añadida correctamente");
+				JOptionPane.showMessageDialog(null, "Visita añadida correctamente");
 
 			}
 		});

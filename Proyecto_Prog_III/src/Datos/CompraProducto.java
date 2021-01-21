@@ -53,10 +53,10 @@ public class CompraProducto extends Compra implements TienePrecio {
 		Producto p = getProducto();
 		if(p instanceof Visita) {
 			Visita v = (Visita) p;
-			return "Compra de visita a " +v.getLugarInteres()+ " en " +v.getDireccion()+ " para " +cantidad+ "personas. PRECIO=" +precio+ "€";
+			return "Compra de visita a " +v.getLugarInteres()+ " en " +v.getDireccion()+ " para " +cantidad+ "personas. PRECIO=" +precio+ "â‚¬";
 		}else {
 			Vuelo vu = (Vuelo) p;
-			return "Compra de " +cantidad+ " billetes para el vuelo desde " +vu.getOrigen()+ " hasta " +vu.getDestino()+ " el dia " +vu.getFechaYHora()+ ". PRECIO=" +precio+ "€";
+			return "Compra de " +cantidad+ " billetes para el vuelo desde " +vu.getOrigen()+ " hasta " +vu.getDestino()+ " el dia " +vu.getFechaYHora()+ ". PRECIO=" +precio+ "â‚¬";
 		}
 	}
 
@@ -65,16 +65,16 @@ public class CompraProducto extends Compra implements TienePrecio {
 	 */
 	@Override
 	public double calcPrecio() {
-		Connection con = BD.initBD();
+		/*Connection con = BD.initBD();
 		Statement st = null;
 		String query;
 		double precio = 0;
 		try {
 			st = con.createStatement();
 			if(this.codigoComprado.substring(0, 2).equals("VI")) {
-				query = "SELECT precio FROM Visitas WHERE codigo=" + this.codigoComprado;
+				query = "SELECT precio FROM Visitas WHERE codigo='" + this.codigoComprado+"'";
 			}else {
-				query = "SELECT precio FROM Vuelos WHERE codigo=" + this.codigoComprado;
+				query = "SELECT precio FROM Vuelos WHERE codigo='" + this.codigoComprado+"'";
 			}
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next())
@@ -82,7 +82,9 @@ public class CompraProducto extends Compra implements TienePrecio {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
+		double precio = BD.obtenerPrecioCompraProducto(this.codigoComprado, this.cantidad);
 		return precio;
 	}
 	

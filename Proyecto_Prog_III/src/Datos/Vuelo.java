@@ -41,7 +41,7 @@ public class Vuelo extends Producto {
 		this.duracion = duracion;
 		this.precio = precio;
 		ArrayList<String> codigos = codigosEnAL("Vuelos");
-		String codigo = generarCodigo(codigos, "VU", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
+		String codigo = generarCodigo(codigos, "VU", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()-1);
 		this.setCodigo(codigo);
 	}
 

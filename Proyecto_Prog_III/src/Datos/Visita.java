@@ -41,7 +41,7 @@ public class Visita extends Producto {
 		this.duracion = duracion;
 		this.precio = precio;
 		ArrayList<String> codigos = codigosEnAL("Visitas");
-		String codigo = generarCodigo(codigos, "VI", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
+		String codigo = generarCodigo(codigos, "VI", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()-1);
 		this.setCodigo(codigo);
 	}
 

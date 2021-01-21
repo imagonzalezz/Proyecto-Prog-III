@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import BaseDatos.BD;
+import Ventanas.Bienvenido;
 
 public class Main {
 	
@@ -14,6 +15,7 @@ public class Main {
 		BD.usarCrearTablasBD(con);
 		Statement st = con.createStatement();
 		BD.cerrarBD(con, st);
+		new Bienvenido();
 	}
 	
 	

@@ -93,17 +93,17 @@ public class CompraOferta extends Compra implements TienePrecio {
 	public String toString() {
 		Oferta o = getOferta();
 		Hotel h = getHotel();
-		return "Reserva de " + numDias + " dias en el Hotel " + h.getNombre() + " de " + h.getCiudad() + " para " + numAdultos + " adultos y " + numMenores + " menores. PRECIO=" + precio + "€";
+		return "Reserva de " + numDias + " dias en el Hotel " + h.getNombre() + " de " + h.getCiudad() + " para " + numAdultos + " adultos y " + numMenores + " menores. PRECIO=" + precio + "â‚¬";
 	}
 	
 	/**
-	 * Calcula el precio de la compra teniendo en cuenta el precio por adulto y menor y el número de los mismos
+	 * Calcula el precio de la compra teniendo en cuenta el precio por adulto y menor y el nï¿½mero de los mismos
 	 */
 	@Override
 	public double calcPrecio() {
-		Connection con = BD.initBD();
+		/*Connection con = BD.initBD();
 		Statement st = null;
-		String query = "SELECT precioPorAdulto,precioPorMenor FROM Ofertas where codigo=" + this.codigoComprado;
+		String query = "SELECT precioPorAdulto,precioPorMenor FROM Ofertas where codigo='" + this.codigoComprado+"'";
 		double precio = 0;
 		double precioPorAdulto = 0;
 		double precioPorMenor = 0;
@@ -112,11 +112,12 @@ public class CompraOferta extends Compra implements TienePrecio {
 			ResultSet rs = st.executeQuery(query);
 			precioPorAdulto = rs.getDouble("precioPorAdulto");
 			precioPorMenor = rs.getDouble("precioPorMenor");
-			precio = ((precioPorAdulto*this.numAdultos) + (precioPorMenor*this.numMenores)) * numDias;
+			precio = ((precioPorAdulto*this.numAdultos) + (precioPorMenor*this.numMenores)) * this.numDias;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		double precio = BD.obtenerPrecioCompraOferta(this.codigoComprado, this.numAdultos, this.numMenores, this.numDias);
 		return precio;
 	}
 	

@@ -43,7 +43,7 @@ public class Hotel extends TieneCod{
 		this.ciudad = ciudad;
 		this.estrellas = estrellas;
 		ArrayList<String> codigos = codigosEnAL("Hoteles");
-		String codigo = generarCodigo(codigos, "HO", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()+1);
+		String codigo = generarCodigo(codigos, "HO", (int) Math.floor(Math.random()*(9999-1000+1)+1000), codigos.size()-1);
 		this.setCodigo(codigo);
 	}
 

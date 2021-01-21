@@ -48,12 +48,11 @@ public abstract class TieneCod {
 			return prefijo + cod;
 		else {
 			if(!(prefijo+cod).equals(codigos.get(indice)))
-				generarCodigo(codigos,prefijo,cod,indice-1);
+				return generarCodigo(codigos,prefijo,cod,indice-1);
 			else{
-				generarCodigo(codigos,prefijo,(int) Math.floor(Math.random()*(9999-1000+1)+1000),codigos.size()+1);
+				return generarCodigo(codigos,prefijo,(int) Math.floor(Math.random()*(9999-1000+1)+1000),codigos.size());
 			}
 		}
-		return null;
 	}
 	
 }
