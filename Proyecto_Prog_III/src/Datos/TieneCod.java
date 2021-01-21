@@ -16,7 +16,7 @@ public abstract class TieneCod {
 	 * @return ArrayList con todos los codigos que haya en la base de datos
 	 */
 	public ArrayList<String> codigosEnAL(String tabla){
-		ArrayList<String> codigos = new ArrayList<>();
+		/*ArrayList<String> codigos = new ArrayList<>();
 		Connection con = BD.initBD();
 		Statement st = null;
 		String query = "SELECT codigo FROM " + tabla;
@@ -30,7 +30,8 @@ public abstract class TieneCod {
 			e.printStackTrace();
 		}finally {
 			BD.cerrarBD(con, st);
-		}
+		}*/
+		ArrayList<String> codigos = BD.obtenerCodigos(tabla);
 		return codigos;
 		
 	}

@@ -11,17 +11,25 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle.Control;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import BaseDatos.BD;
+import Datos.CompraOferta;
+import Datos.CompraProducto;
 import Datos.Hotel;
 import Datos.Oferta;
 import Datos.Producto;
+import Datos.TienePrecio;
 import Datos.Visita;
 import Datos.Vuelo;
 
@@ -32,7 +40,7 @@ import javax.swing.SwingConstants;
 
 public class Admin extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel contentPane,panelCentral,panelCompras;
 
 	/**
 	 * Launch the application.
@@ -44,7 +52,7 @@ public class Admin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Admin frame = new Admin();
+					Admin frame = new Admin(new PanelCentral());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +66,7 @@ public class Admin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Admin() {
+	public Admin(JPanel panel) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		int alturaPantalla;
 		int anchuraPantalla;
@@ -84,7 +92,7 @@ public class Admin extends JFrame {
 			}
 		});	
 
-		JPanel panelCentral = new JPanel();
+		/*panelCentral = new JPanel();
 		panelCentral.setLayout(new GridLayout(2, 2));
 		
 		
@@ -168,15 +176,73 @@ public class Admin extends JFrame {
 		panelCentral.add(aHotel);
 		panelCentral.add(aOferta);
 		panelCentral.add(aVisita);
-		panelCentral.add(aVuelo);
+		panelCentral.add(aVuelo);*/
 
-		contentPane.add(panelCentral, BorderLayout.CENTER);
+		contentPane.add(panel, BorderLayout.CENTER);
 		JLabel label = new JLabel("VENTANA DE ADMINISTRACIÓN");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 19));
 		contentPane.add(label, BorderLayout.NORTH);
+		
+		JButton btnVerCompras = new JButton("VER TODAS LAS COMPRAS");
+		JPanel pSur = new JPanel();
+		pSur.add(btnVerCompras);
+		getContentPane().add(pSur,BorderLayout.SOUTH);
+		
+		
+		/*panelCompras = new JPanel(new BorderLayout());
+		JButton btnAtras = new JButton("VOLVER");
+		panelCompras.add(btnAtras, BorderLayout.SOUTH);
+		
+		DefaultTableModel modeloTabla = new DefaultTableModel();
+		String identificadores[] = {"USUARIO","PRECIO","TIPO"};
+		modeloTabla.setColumnIdentifiers(identificadores);
+		
+		TreeMap<String, ArrayList<TienePrecio>> tm = BD.obtenerComprasPorUsuario();
+		for(String usuario: tm.keySet()) {
+			for(TienePrecio tp: tm.get(usuario)) {
+				if(tp instanceof CompraOferta) {
+					CompraOferta co = (CompraOferta)tp;
+					String fila[] = {co.getUsuario().getUsuario(),String.valueOf(co.getPrecio()),"OFERTA"};
+					modeloTabla.addRow(fila);
+				}else {
+					CompraProducto cp = (CompraProducto)tp;
+					if(cp.getCodigoComprado().substring(0, 2).equals("VI")) {
+						String fila[] = {cp.getUsuario().getUsuario(),String.valueOf(cp.getPrecio()),"VISITA"};
+						modeloTabla.addRow(fila);
+					}else {
+						String fila[] = {cp.getUsuario().getUsuario(),String.valueOf(cp.getPrecio()),"VUELO"};
+						modeloTabla.addRow(fila);
+					}
+				}
+			}
+		}
+		JTable tablaCompras = new JTable(modeloTabla);
+		JScrollPane scrollTabla = new JScrollPane(tablaCompras);
+		panelCompras.add(scrollTabla,BorderLayout.CENTER);
+		
+		btnAtras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				contentPane.add(panelCentral,BorderLayout.CENTER);
+			}
+		});*/
+
+		JFrame v = this;
+		btnVerCompras.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				v.dispose();
+				Admin a = new Admin(new PanelCompras());
+				a.setVisible(true);
+			}
+		});
+		
 
 	}
-
 
 }

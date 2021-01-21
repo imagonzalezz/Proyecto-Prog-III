@@ -612,10 +612,10 @@ public class BD {
 		 Statement st = null;
 		 TreeMap<String,ArrayList<TienePrecio>> tmCompras = new TreeMap<>();
 		 String tabla = "ComprasOfertas";
-		 String query = "SELECT * FROM " +tabla;
+		 String query = "SELECT * FROM ";
 		 try {
 			st = con.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			ResultSet rs = st.executeQuery(query+tabla);
 			while(rs.next()) {
 				String codigoComprado = rs.getString("codigo");
 				String u = rs.getString("usuario");
@@ -629,7 +629,7 @@ public class BD {
 				tmCompras.get(co.getUsuario().getUsuario()).add(co);
 			}
 			tabla = "ComprasVisitas";
-			ResultSet rs2 = st.executeQuery(query);
+			ResultSet rs2 = st.executeQuery(query+tabla);
 			while(rs2.next()) {
 				String codigoComprado = rs.getString("codigo");
 				String u = rs.getString("usuario");
@@ -641,7 +641,7 @@ public class BD {
 				tmCompras.get(cp.getUsuario().getUsuario()).add(cp);
 			}
 			tabla = "ComprasVuelos";
-			ResultSet rs3 = st.executeQuery(query);
+			ResultSet rs3 = st.executeQuery(query+tabla);
 			while(rs3.next()) {
 				String codigoComprado = rs.getString("codigo");
 				String u = rs.getString("usuario");
@@ -701,6 +701,44 @@ public class BD {
 				e.printStackTrace();
 			}
 			return precio;
+	 }
+	 
+	 public static boolean existeVisita(String codigo) {
+		 String query = "SELECT * FROM Visitas WHERE codigo='"+codigo+"'";
+		 Connection con = BD.initBD();
+		Statement st = null;
+		
+		boolean existe = false;
+		try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next())
+				existe = true;
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return existe;
+	 }
+	 
+	 public static ArrayList<String> obtenerCodigos(String tabla){
+		 ArrayList<String> codigos = new ArrayList<>();
+			Connection con = BD.initBD();
+			Statement st = null;
+			String query = "SELECT codigo FROM " + tabla;
+			try {
+				st = con.createStatement();
+				ResultSet rs = st.executeQuery(query);
+				while(rs.next())
+					codigos.add(rs.getString("codigo"));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				BD.cerrarBD(con, st);
+			}
+		return codigos;
 	 }
 	 
 }

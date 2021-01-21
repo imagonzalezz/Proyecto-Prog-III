@@ -139,10 +139,10 @@ public class Inicio_sesion extends JFrame {
 				
 				
 			if(user.equals("admin") && pwd.equals("admin")) {
-				Admin vadmmAdmin= new Admin();
+				Admin vadmmAdmin= new Admin(new PanelCentral());
 				vadmmAdmin.setVisible(true);
 				//v.setVisible(false);
-				
+				dispose();
 				
 			}
 			
