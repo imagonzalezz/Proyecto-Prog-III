@@ -37,8 +37,8 @@ public class CompraProducto extends Compra implements TienePrecio {
 			Visita v = (Visita) p;
 			return "Compra de visita a " +v.getLugarInteres()+ " en " +v.getDireccion()+ " para " +cantidad+ "personas. PRECIO=" +precio+ "€";
 		}else {
-			Vuelo v = (Vuelo) p;
-			return "Compra de " +cantidad+ " billetes para el vuelo desde " +v.getOrigen()+ " hasta " +v.getDestino()+ " el dia " +v.getFechaYHora()+ ". PRECIO=" +precio+ "€";
+			Vuelo vu = (Vuelo) p;
+			return "Compra de " +cantidad+ " billetes para el vuelo desde " +vu.getOrigen()+ " hasta " +vu.getDestino()+ " el dia " +vu.getFechaYHora()+ ". PRECIO=" +precio+ "€";
 		}
 	}
 
