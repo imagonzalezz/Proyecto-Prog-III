@@ -123,6 +123,10 @@ public class BD {
 		}
 	}
 
+	/**
+	 * Añade un usuario a la base de datos
+	 * @param u objeto usuario a añadir en la base de datos
+	 */
 	public static void anyadirUsuario(Usuario u){
 		Connection con = BD.initBD();
 		Statement st = null;
@@ -140,6 +144,10 @@ public class BD {
 		 
 	}
 	
+	/**
+	 * Añade un producto a la base de datos
+	 * @param p objeto producto a añadir en la base de datos
+	 */
 	public static void anyadirProducto(Producto p) {
 		Connection con = BD.initBD();
 		Statement st = null;
@@ -166,6 +174,10 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Añade una oferta a la base de datos
+	 * @param o objeto oferta a añadir a la base de datos
+	 */
 	public static void anyadirOferta(Oferta o) {
 		Connection con = BD.initBD();
 		Statement st = null;
@@ -182,6 +194,10 @@ public class BD {
 		}
 	}
 	
+	/**
+	 * Añade un hotel a la base de datos
+	 * @param h objeto hotel a añadir a la base de datos
+	 */
 	public static void anyadirHotel(Hotel h) {
 		Connection con = BD.initBD();
 		Statement st = null;
@@ -232,6 +248,11 @@ public class BD {
 		return resultado;
 	}
 	
+	/**
+	 * Devuelve un objeto usuario cuyo nombre de usuario sea el indicado
+	 * @param usuario nombre de usuario del usuario que se quiere obtener
+	 * @return objeto usuario cuyo nombre de usuario coincide con el indicado
+	 */
 	public static Usuario obtenerUsuario(String usuario) {
 		Connection con = BD.initBD();
 		String query = "select * from Usuarios where usuario = '"+usuario+"'";
@@ -254,7 +275,10 @@ public class BD {
 		return u;
 	}
 	
-	
+	/**
+	 * 
+	 * @return ArrayList de String con todos los destinos de las ofertas
+	 */
 	public static ArrayList<String> destinosOfertas(){
 		Connection con = BD.initBD();
 		ArrayList<String> destinos = new ArrayList<>();
@@ -280,6 +304,11 @@ public class BD {
 		return destinos;
 	}
 	
+	/**
+	 * 
+	 * @param destino destino deseado
+	 * @return ArrayList de ofertas con las ofertas cuyo destino sea el indicado
+	 */
 	public static ArrayList<Oferta> obtenerOfertasDestino(String destino){
 		ArrayList<Oferta> ofertas = new ArrayList<>();
 		
@@ -314,6 +343,10 @@ public class BD {
 		return ofertas;
 	}
 	
+	/**
+	 * 
+	 * @return ArrayList de String con todos los destinos de las visitas
+	 */
 	public static ArrayList<String> destinosVisita() {
 		Connection con = BD.initBD();
 		ArrayList<String> destinos = new ArrayList<>();
@@ -335,6 +368,11 @@ public class BD {
 		return destinos;
 	}
 	
+	/**
+	 * 
+	 * @param destino destino deseado
+	 * @return ArrayList de visitas con las visitas que esten en la ciudad indicada
+	 */
 	public static ArrayList<Visita> obtenerVisitasDestino(String destino){
 		ArrayList<Visita> visitas = new ArrayList<>();
 		String query = "SELECT * FROM Visitas WHERE direccion='"+destino+"'";
@@ -362,6 +400,10 @@ public class BD {
 		return visitas;
 	}
 	
+	/**
+	 * 
+	 * @return ArrayList de String con todas las ciudades de origen de los vuelos
+	 */
 	 public static ArrayList<String> origenesVuelo(){
 		 Connection con = BD.initBD();
 		 ArrayList<String> origenes = new ArrayList<>();
@@ -382,7 +424,12 @@ public class BD {
 		}
 		 return origenes;
 	 }
-	
+	 
+	/**
+	 * 
+	 * @param ciudad ciudad de origen de la que se quiere visualizar el vuelo
+	 * @return ArrayList de vuelos con los vuelos cuya ciudad de origen sea la indicada
+	 */
 	 public static ArrayList<Vuelo> obtenerVuelosOrigen(String ciudad){
 		 ArrayList<Vuelo> vuelos = new ArrayList<>();
 		 String query = "SELECT * FROM Vuelos WHERE origen='" + ciudad + "'";
@@ -410,6 +457,11 @@ public class BD {
 		 return vuelos;
 	 }
 	 
+	 /**
+	  * 
+	  * @param codigo codigo de la oferta que se quiere obtener
+	  * @return objeto oferta cuyo codigo coincide con el indicado
+	  */
 	 public static Oferta obtenerOferta(String codigo) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
@@ -434,6 +486,11 @@ public class BD {
 		 return oferta;
 	 }
 	 
+	 /**
+	  * 
+	  * @param cod codigo del hotel que se quiere obtener
+	  * @return objeto hotel cuyo codigo coincide con el indicado
+	  */
 	 public static Hotel obtenerHotel(String cod) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
@@ -458,6 +515,11 @@ public class BD {
 		 return h;
 	 }
 	 
+	 /**
+	  * 
+	  * @param cod codigo del producto que se quiere obtener
+	  * @return objeto producto cuyo codigo coincide con el indicado
+	  */
 	 public static Producto obtenerProducto(String cod) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
@@ -500,7 +562,11 @@ public class BD {
 		 return p;
 	 }
 	 
-	 public static void anyadirOferta(CompraOferta o) {
+	 /**
+	  * Añade una compra de una oferta a la base de datos
+	  * @param o objeto CompraOferta que se quiere añadir a la base de datos
+	  */
+	 public static void anyadirCompraOferta(CompraOferta o) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
 		 String query = "INSERT INTO ComprasOfertas VALUES('"+o.getCodigoComprado()+"','"+o.getUsuario()+"',"+o.getNumDias()+","+o.getNumAdultos()+","+o.getNumMenores()+")";
@@ -515,7 +581,11 @@ public class BD {
 		}
 	 }
 	 
-	 public static void anyadirProducto(CompraProducto p) {
+	 /**
+	  * Añade una compra de un producto a la base de datos
+	  * @param p objeto COmpraProducto que se quiere añadir a la base de datos
+	  */
+	 public static void anyadirCompraProducto(CompraProducto p) {
 		 Connection con = BD.initBD();
 		 Statement st = null;
 		 String tabla = "ComprasVuelos";
@@ -533,6 +603,10 @@ public class BD {
 		}
 	 }
 	 
+	 /**
+	  * 
+	  * @return TreeMap cuya clave es un nombre de usuario y por cada clave almacena un ArrayList de las compras que ha hecho ese usuario
+	  */
 	 public static TreeMap<String,ArrayList<TienePrecio>> obtenerComprasPorUsuario(){
 		 Connection con = BD.initBD();
 		 Statement st = null;
