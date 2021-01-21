@@ -151,7 +151,7 @@ contentPane.setLayout(new BorderLayout());
 		ArrayList<Visita> visitas = BD.obtenerVisitasDestino(destino);
 		for(Visita v: visitas) {
 			System.out.println(v);
-			String fila[] = {v.getCodigo(),v.getLugarInteres(),v.getDireccion(),String.valueOf(v.getValoracion()), String.valueOf(v.getPrecio())+"€",String.valueOf(v.getDuracion())};
+			String fila[] = {v.getCodigo(),v.getLugarInteres(),v.getDireccion(),String.valueOf(v.getValoracion()), String.valueOf(v.getPrecio())+" €",String.valueOf(v.getDuracion()+" Minutos")};
 			modeloTabla.addRow(fila);
 		}
 	}
