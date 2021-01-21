@@ -8,6 +8,15 @@ public class Visita extends Producto {
 	protected String direccion;
 	protected double valoracion;
 	
+	/**
+	 * Constructor para instanciar una visita que ya existe en la base de datos
+	 * @param codigo codigo de la visita
+	 * @param lugarInteres
+	 * @param direccion
+	 * @param valoracion
+	 * @param precio
+	 * @param duracion
+	 */
 	public Visita(String codigo,String lugarInteres,String direccion, double valoracion, double precio, double duracion) {
 		this.lugarInteres = lugarInteres;
 		this.codigoProducto = codigo;
@@ -17,6 +26,14 @@ public class Visita extends Producto {
 		this.precio = precio;
 	}
 	
+	/**
+	 * Constructor para instanciar un usuario que no existe en la base de datos
+	 * @param lugarInteres
+	 * @param direccion
+	 * @param valoracion
+	 * @param precio
+	 * @param duracion
+	 */
 	public Visita(String lugarInteres,String direccion, double valoracion, double precio, double duracion) {
 		this.lugarInteres = lugarInteres;
 		this.direccion = direccion;
