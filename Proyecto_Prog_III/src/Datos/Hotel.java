@@ -15,16 +15,15 @@ public class Hotel extends TieneCod{
 	protected String ciudad;
 	protected int estrellas;
 
-	
-	/**
-	 * Constructor por defecto
-	 */
-	
-	public Hotel() {
+
+	public Hotel(String codigo,String nombre, String ciudad, int estrellas) {
 		super();
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.ciudad = ciudad;
+		this.estrellas = estrellas;
 	}
-
-
+	
 	/**
 	 * 
 	 * @param nombre Nombre

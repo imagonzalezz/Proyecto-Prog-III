@@ -38,6 +38,23 @@ public class CompraOferta extends Compra implements TienePrecio {
 		this.numDias = numDias;
 	}
 	
+	public Oferta getOferta() {
+		Oferta o = BD.obtenerOferta(this.codigoComprado);
+		return o;
+	}
+	
+	public Hotel getHotel() {
+		Hotel h = BD.obtenerHotel(this.getOferta().getCodigoHotel());
+		return h;
+	}
+	
+	@Override
+	public String toString() {
+		Oferta o = getOferta();
+		Hotel h = getHotel();
+		return "Reserva de " + numDias + " dias en el Hotel " + h.getNombre() + " de " + h.getCiudad() + " para " + numAdultos + " adultos y " + numMenores + " menores. PRECIO=" + precio + "€";
+	}
+	
 	@Override
 	public double calcPrecio() {
 		Connection con = BD.initBD();

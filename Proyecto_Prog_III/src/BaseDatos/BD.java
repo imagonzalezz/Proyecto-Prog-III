@@ -76,6 +76,7 @@ public class BD {
 					   "numMenores int)");
 			statement.executeUpdate("create table Hoteles "+
 					   "(codigo string, "+
+					   "nombre string, " +
 					   "direccion string, "+
 					   "estrellas int)");
 			return statement;
@@ -180,7 +181,7 @@ public class BD {
 	public static void anyadirHotel(Hotel h) {
 		Connection con = BD.initBD();
 		Statement st = null;
-		String query = "INSERT INTO Hoteles VALUES('"+h.getCodigo()+"','"+h.getCiudad()+"',"+h.getEstrellas()+")";
+		String query = "INSERT INTO Hoteles VALUES('"+h.getCodigo()+"','"+h.getNombre()+"','"+h.getCiudad()+"',"+h.getEstrellas()+")";
 		try {
 			st = con.createStatement();
 			st.executeUpdate(query);
@@ -404,4 +405,95 @@ public class BD {
 		}
 		 return vuelos;
 	 }
+	 
+	 public static Oferta obtenerOferta(String codigo) {
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 Oferta oferta = null;
+		 String query = "SELECT * FROM Ofertas WHERE codigo='" + codigo + "'";
+		 try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String cod = rs.getString("codigo");
+				String codigoHotel = rs.getString("codigoHotel");
+				double precioPorAdulto = rs.getDouble("precioPorAdulto");
+				double precioPorMenor = rs.getDouble("precioPorMenor");
+				oferta = new Oferta(cod, codigoHotel, precioPorAdulto, precioPorMenor);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		 return oferta;
+	 }
+	 
+	 public static Hotel obtenerHotel(String cod) {
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 Hotel h = null;
+		 String query = "SELECT * FROM Hoteles WHERE codigo='" + cod + "'";
+		 try {
+			st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String codigo = rs.getString("codigo");
+				String nombre = rs.getString("nombre");
+				String ciudad = rs.getString("ciudad");
+				int estrellas = rs.getInt("estrellas");
+				h = new Hotel(codigo, nombre, ciudad, estrellas);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		 return h;
+	 }
+	 
+	 public static Producto obtenerProducto(String cod) {
+		 Connection con = BD.initBD();
+		 Statement st = null;
+		 Producto p = null;
+		 String query;
+		 try {
+			st = con.createStatement();
+			if(cod.substring(0, 2).equals("VI")) {
+				query = "SELECT * FROM Visitas WHERE codigo='" + cod + "'";
+				ResultSet rs = st.executeQuery(query);
+				if(rs.next()) {
+					String codigo = rs.getString("codigo");
+					String lugarInteres = rs.getString("lugarInteres");
+					String direccion = rs.getString("direccion");
+					double valoracion = rs.getDouble("valoracion");
+					double precio = rs.getDouble("valoracion");
+					double duracion = rs.getDouble("duracion");
+					p = new Visita(codigo, lugarInteres, direccion, valoracion, precio, duracion);
+				}
+			 }
+			else {
+				query = "SELECT * FROM Vuelos WHERE codigo='" + cod + "'";
+				ResultSet rs = st.executeQuery(query);
+				if(rs.next()) {
+					String codigo = rs.getString("codigo");
+					String origen = rs.getString("origen");
+					String destino = rs.getString("destino");
+					String fechaYHora = rs.getString("fechaYHora");
+					double precio = rs.getDouble("precio");
+					double duracion = rs.getDouble("duracion");
+					p = new Vuelo(codigo, origen, destino, fechaYHora, duracion, precio);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			cerrarBD(con, st);
+		}
+		 return p;
+	 }
+	 
 }

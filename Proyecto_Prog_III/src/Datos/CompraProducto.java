@@ -24,6 +24,23 @@ public class CompraProducto extends Compra implements TienePrecio {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+	
+	public Producto getProducto() {
+		Producto p = BD.obtenerProducto(codigoComprado);
+		return p;
+	}
+	
+	@Override
+	public String toString() {
+		Producto p = getProducto();
+		if(p instanceof Visita) {
+			Visita v = (Visita) p;
+			return "Compra de visita a " +v.getLugarInteres()+ " en " +v.getDireccion()+ " para " +cantidad+ "personas. PRECIO=" +precio+ "€";
+		}else {
+			Vuelo v = (Vuelo) p;
+			return "Compra de " +cantidad+ " billetes para el vuelo desde " +v.getOrigen()+ " hasta " +v.getDestino()+ " el dia " +v.getFechaYHora()+ ". PRECIO=" +precio+ "€";
+		}
+	}
 
 	@Override
 	public double calcPrecio() {
